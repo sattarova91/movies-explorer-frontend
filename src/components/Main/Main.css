@@ -156,8 +156,8 @@
 
 .about__progress-container {
   display: grid;
-  grid-template-rows:  1fr 1fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows:  36px 1fr;
+  grid-template-columns: 1fr 4fr;
 }
 
 .about__progress-bar {
@@ -166,7 +166,10 @@
   font-size: 14px;
   line-height: 17px;
   background-color: #F2F2F2;
-  text-align: center;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .about__progress-bar_green {
@@ -180,4 +183,123 @@
   line-height: 17px;
   color: #A0A0A0;
   text-align: center;
+  margin: 14px 0 0 0;
 }
+
+.student {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 110px 70px 125px 70px;
+}
+
+.student__title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #000000;
+  margin: 0;
+}
+
+.student__info {
+  display: flex;
+  padding: 66px 0 100px 0;
+  justify-content: space-between;
+}
+
+.student__container {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.student__name {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.student__job {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 18px 0 26px 0;
+}
+
+.student__about {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  margin: 0;
+}
+
+
+.student__links {
+  list-style-type: none;
+  display: flex;
+  padding: 100px 0 0 0;
+  margin: 0;
+}
+
+.student__link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.student__paragraph {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+  color: #A0A0A0;
+  margin: 0;
+}
+
+.student__portfolio-links {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 50px 0 0 0;
+}
+
+
+.student__portfolio-link {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 50px;
+  letter-spacing: -0.04em;
+  padding: 20px 0 20px 0;
+  display: inline-block;
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+}
+
+.student__portfolio-container {
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.student__portfolio-container:last-child {
+  border-bottom: 0;
+}
+
+.student__link-img {
+  height: 60px;
+  width: 29px;
+}
+
+
