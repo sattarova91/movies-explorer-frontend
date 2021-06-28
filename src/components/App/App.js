@@ -1,28 +1,29 @@
 import { Route, Switch } from 'react-router-dom';
 import Main from '../Main/Main';
+import Movies from '../Movies/Movies';
 import './App.css';
 
 function App() {
   return (
     <div className="page">
       <Switch>
-        <Route path="/movies">
-          movies
+        <Route exact path="/movies">
+          <Movies />
         </Route>
-        <Route path="/savedmovies">
+        <Route exact path="/savedmovies">
           savedmovies
         </Route>
-        <Route path="/profile">
+        <Route exact path="/profile">
           profile
         </Route>
-        <Route path="/signin">
+        <Route exact path="/signin">
           signin
         </Route>
-        <Route path="/signup">
+        <Route exact path="/signup">
           signup
         </Route>
-        <Route path="/">
-          <Main></Main>
+        <Route exact path="/">
+          <Main />
         </Route>
       </Switch>
     </div>

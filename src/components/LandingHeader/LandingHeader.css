@@ -1,0 +1,29 @@
+.header__landing {
+  background-color: #073042;
+}
+
+.header__button-signup {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  background: transparent;
+  color: #FFFFFF;
+  width: 77px;
+  height: 16px;
+  border: 0;
+}
+
+.header__button-signin {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  background: #2BE080;
+  border-radius: 3px;
+  color: #000000;
+  width: 76px;
+  height: 32px;
+  margin-left: 30px;
+  border: 0;
+}

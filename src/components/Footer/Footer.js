@@ -9,9 +9,9 @@ function Footer(props) {
         <p className="footer__date">&copy;&nbsp;2020</p>
         <nav>
           <ul className="footer__links">
-            <li><a className="footer__link" href="https://praktikum.yandex.ru/" target="_blank">Яндекс.Практикум</a></li>
-            <li><a className="footer__link" href="https://github.com/" target="_blank">Github</a></li>
-            <li><a className="footer__link" href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+            <li><a className="footer__link" href="https://praktikum.yandex.ru/" target="_blank" rel="noreferrer">Яндекс.Практикум</a></li>
+            <li><a className="footer__link" href="https://github.com/" target="_blank" rel="noreferrer">Github</a></li>
+            <li><a className="footer__link" href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook</a></li>
           </ul>
         </nav>
       </div>

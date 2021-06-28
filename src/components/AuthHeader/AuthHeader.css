@@ -1,0 +1,17 @@
+.header__auth {
+  background-color: #FFFFFF;
+}
+
+.header__movies {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.header__saved-movies {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+}

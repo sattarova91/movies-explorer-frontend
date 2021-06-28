@@ -4,14 +4,11 @@ import './Header.css';
 
 function Header(props) {
   return (
-    <header className="header">
+    <div className={`header ${props.className}`}>
       <img className="logo" alt="Логотип" src={HeaderLogo} />
-      <nav>
-        <button className="button header__button-signup">Регистрация</button>
-        <button className="button header__button-signin">Войти</button>
-      </nav>
-    </header>
-  )
+      {props.children}
+    </div>
+  );
 }
 
 export default Header;
