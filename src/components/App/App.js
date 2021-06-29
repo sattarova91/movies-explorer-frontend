@@ -1,6 +1,8 @@
 import { Route, Switch } from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
+import Signup from '../Signup/Signup';
+import Signin from '../Signin/Signin';
 import './App.css';
 
 function App() {
@@ -17,10 +19,10 @@ function App() {
           profile
         </Route>
         <Route exact path="/signin">
-          signin
+          <Signin />
         </Route>
         <Route exact path="/signup">
-          signup
+          <Signup />
         </Route>
         <Route exact path="/">
           <Main />

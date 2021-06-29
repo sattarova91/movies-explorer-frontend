@@ -18,3 +18,8 @@
 .button:focus {
   outline: none;
 }
+
+.logo {
+  width: 38px;
+  height: 38px;
+}
