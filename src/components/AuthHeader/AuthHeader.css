@@ -1,17 +1,47 @@
 .header__auth {
   background-color: #FFFFFF;
+  display: flex;
+  flex-direction: row;
 }
 
-.header__movies {
+.header__nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header__button-movies {
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
   line-height: 18px;
+  border: 0;
+  background-color: transparent;
+  margin-right: 16px;
 }
 
-.header__saved-movies {
+.header__button-saved-movies {
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
   line-height: 18px;
+  border: 0;
+  background-color: transparent;
+}
+
+.header__img-account {
+  background: #F9F9F9;
+  border-radius: 4px;
+  width: 11.5px;
+  height: 14px;
+  padding: 8px 7px 8px 7px;
+}
+
+.header__button-account {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  border: 0;
+  background-color: transparent;
 }

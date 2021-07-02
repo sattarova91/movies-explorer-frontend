@@ -4,7 +4,7 @@ import Movies from '../Movies/Movies';
 import Signup from '../Signup/Signup';
 import Signin from '../Signin/Signin';
 import './App.css';
-
+//шрифты, signup кнопка
 function App() {
   return (
     <div className="page">

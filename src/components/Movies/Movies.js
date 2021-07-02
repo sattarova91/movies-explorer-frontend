@@ -11,11 +11,15 @@ function Movies(props) {
       <section className="search">
         <div className="search__container">
           <img className="search__img" alt="поиск" src={searchImg} />
-          <input></input>
           <button className="search__button">Найти</button>
-          <div className="search__checkbox">
-            <p className="search__paragraph">Короткометражки</p>
-          </div>
+          <input></input>
+        </div>
+        <div className="search__short-film">
+          <p className="search__paragraph">Короткометражки</p>
+          <label className="search__switch">
+            <input type="checkbox" class="search__checkbox" id="checkbox" />
+            <span className="search__slider"></span>
+          </label>
         </div>
       </section>
       <Footer>
