@@ -1,11 +1,8 @@
-.header {
+.header__landing {
+  background-color: #073042;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.header__landing {
-  background-color: #073042;
 }
 
 .header__button-signup {

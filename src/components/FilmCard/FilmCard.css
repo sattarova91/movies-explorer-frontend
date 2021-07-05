@@ -1,0 +1,48 @@
+.film-card__img {
+  width: 100%;
+  height: 201px;
+}
+
+.film-card {
+  position: relative;
+}
+
+.film-card__about {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 14px auto 0 auto;
+  width: 95%;
+}
+
+.film-card__title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+}
+
+.film-card__time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 10px;
+  background-color: #F9F9F9;
+  border-radius: 3px;
+  color: #A0A0A0;
+  padding: 3px 4px;
+  margin: 0 0 0 30px;
+  height: 18px;
+}
+
+.film-card__save-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+

@@ -1,27 +1,34 @@
 import React from 'react';
 import Footer from '../Footer/Footer';
+import Search from '../Search/Search';
+import Preloader from '../Preloader/Preloader';
+import FilmCard from '../FilmCard/FilmCard';
 import './Movies.css';
-import searchImg from '../../images/search-img.svg';
+import saveButton from '../../images/save-button-icon.svg';
 import AuthHeader from '../AuthHeader/AuthHeader';
+import filmImg from '../../images/film-img.png';
+
+const initialCards = [
+  { src: filmImg,
+    title: 'Киноальманах «100 лет дизайна»',
+    time: '1ч 17м'
+  }
+]
 
 function Movies(props) {
   return (
     <>
       <AuthHeader />
-      <section className="search">
-        <div className="search__container">
-          <img className="search__img" alt="поиск" src={searchImg} />
-          <button className="search__button">Найти</button>
-          <input></input>
-        </div>
-        <div className="search__short-film">
-          <p className="search__paragraph">Короткометражки</p>
-          <label className="search__switch">
-            <input type="checkbox" class="search__checkbox" id="checkbox" />
-            <span className="search__slider"></span>
-          </label>
-        </div>
+      <Search />
+      <hr className="section-separator" />
+      <section className="gallery">
+        <FilmCard card={initialCards[0]} />
+        <FilmCard card={initialCards[0]} />
+        <FilmCard card={initialCards[0]} />
+        <FilmCard card={initialCards[0]} />
+        <FilmCard card={initialCards[0]} />
       </section>
+      <Preloader />
       <Footer>
       </Footer>
     </>

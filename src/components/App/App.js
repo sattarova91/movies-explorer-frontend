@@ -3,6 +3,7 @@ import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import Signup from '../Signup/Signup';
 import Signin from '../Signin/Signin';
+import Profile from '../Profile/Profile';
 import './App.css';
 //шрифты, signup кнопка
 function App() {
@@ -16,7 +17,7 @@ function App() {
           savedmovies
         </Route>
         <Route exact path="/profile">
-          profile
+          <Profile />
         </Route>
         <Route exact path="/signin">
           <Signin />
