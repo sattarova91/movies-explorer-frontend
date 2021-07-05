@@ -8,6 +8,7 @@ function Tech(props) {
     <div className="tech__container">
       <h3 className="tech__subtitle">7 технологий</h3>
       <p className="tech__paragraph">На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые применили в&nbsp;дипломном проекте.</p>
+    </div>
       <ul className="tech__icons">
         <li className="tech__icon">HTML</li>
         <li className="tech__icon">CSS</li>
@@ -17,7 +18,6 @@ function Tech(props) {
         <li className="tech__icon">Express.js</li>
         <li className="tech__icon">mongoDB</li>
       </ul>
-    </div>
   </section>
   )
 }

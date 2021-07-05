@@ -17,6 +17,13 @@
   border: 0;
 }
 
+@media screen and (max-width: 450px) {
+  .header__button-signup {
+    font-size: 10px;
+    width: 64px;
+  }
+}
+
 .header__button-signin {
   font-style: normal;
   font-weight: 500;
@@ -29,4 +36,13 @@
   height: 32px;
   margin-left: 30px;
   border: 0;
+}
+
+@media screen and (max-width: 450px) {
+  .header__button-signin {
+    font-size: 10px;
+    width: 54px;
+    height: 26px;
+    margin-left: 14px;
+  }
 }

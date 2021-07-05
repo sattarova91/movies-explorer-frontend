@@ -4,6 +4,12 @@
   padding: 110px 70px 125px 70px;
 }
 
+@media screen and (max-width: 800px) {
+  .student {
+    padding: 90px 50px 90px 50px;
+  }
+}
+
 .student__title {
   font-style: normal;
   font-weight: normal;
@@ -21,10 +27,37 @@
   justify-content: space-between;
 }
 
+@media screen and (max-width: 800px) {
+  .student__info {
+    padding: 66px 0 90px 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .student__info {
+    flex-direction: column-reverse;
+  }
+}
+
 .student__container {
   max-width: 600px;
   display: flex;
   flex-direction: column;
+}
+
+
+
+
+.student__image {
+  width: 270px;
+  height: 327px;
+}
+
+@media screen and (max-width: 800px) {
+  .student__image {
+    width: 255px;
+    height: 307px;
+  }
 }
 
 .student__name {
@@ -36,12 +69,27 @@
   margin: 0;
 }
 
+@media screen and (max-width: 800px) {
+  .student__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+}
+
 .student__job {
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 20px;
   margin: 18px 0 26px 0;
+}
+
+@media screen and (max-width: 800px) {
+  .student__job {
+    margin: 16px 0 20px 0;
+    font-size: 12px;
+    line-height: 18px;
+  }
 }
 
 .student__about {
@@ -52,12 +100,18 @@
   margin: 0;
 }
 
+@media screen and (max-width: 800px) {
+  .student__about {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
 
 .student__links {
   list-style-type: none;
   display: flex;
-  padding: 100px 0 0 0;
-  margin: 0;
+  padding: 0;
+  margin: auto 0 0 0;
 }
 
 .student__link {
@@ -83,10 +137,9 @@
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 50px 0 0 0;
+  margin: 30px 0 0 0;
+  padding: 0;
 }
-
 
 .student__portfolio-link {
   font-style: normal;
@@ -95,10 +148,15 @@
   line-height: 50px;
   letter-spacing: -0.04em;
   padding: 20px 0 20px 0;
-  display: inline-block;
   display: flex;
   align-items:center;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 800px) {
+  .student__portfolio-link {
+    font-size: 28px;
+  }
 }
 
 .student__portfolio-container {
@@ -113,3 +171,4 @@
   height: 60px;
   width: 29px;
 }
+

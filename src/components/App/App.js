@@ -5,7 +5,7 @@ import Signup from '../Signup/Signup';
 import Signin from '../Signin/Signin';
 import Profile from '../Profile/Profile';
 import './App.css';
-//шрифты, signup кнопка
+//шрифты, signup кнопка, footer link margin bottom
 function App() {
   return (
     <div className="page">
