@@ -10,6 +10,12 @@
   }
 }
 
+@media screen and (max-width: 450px) {
+  .student {
+    padding: 70px 14px 70px 14px;
+  }
+}
+
 .student__title {
   font-style: normal;
   font-weight: normal;
@@ -36,6 +42,7 @@
 @media screen and (max-width: 450px) {
   .student__info {
     flex-direction: column-reverse;
+    padding: 60px 0 70px 0;
   }
 }
 
@@ -44,9 +51,6 @@
   display: flex;
   flex-direction: column;
 }
-
-
-
 
 .student__image {
   width: 270px;
@@ -57,6 +61,13 @@
   .student__image {
     width: 255px;
     height: 307px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .student__image {
+    width: 292px;
+    height: 352px;
   }
 }
 
@@ -76,6 +87,14 @@
   }
 }
 
+@media screen and (max-width: 450px) {
+  .student__name {
+    margin-top: 40px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+}
+
 .student__job {
   font-style: normal;
   font-weight: 500;
@@ -92,6 +111,14 @@
   }
 }
 
+@media screen and (max-width: 450px) {
+  .student__job {
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 20px;
+  }
+}
+
 .student__about {
   font-style: normal;
   font-weight: normal;
@@ -104,6 +131,14 @@
   .student__about {
     font-size: 12px;
     line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .student__about {
+    font-size: 11px;
+    line-height: 16px;
+    margin-bottom: 40px;
   }
 }
 
@@ -124,6 +159,7 @@
   margin-right: 20px;
 }
 
+
 .student__paragraph {
   font-style: normal;
   font-weight: normal;
@@ -133,12 +169,24 @@
   margin: 0;
 }
 
+@media screen and (max-width: 450px) {
+  .student__paragraph {
+    font-size: 14px;
+  }
+}
+
 .student__portfolio-links {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   margin: 30px 0 0 0;
   padding: 0;
+}
+
+@media screen and (max-width: 450px) {
+  .student__portfolio-links  {
+    margin: 20px 0 0 0;
+  }
 }
 
 .student__portfolio-link {
@@ -151,11 +199,20 @@
   display: flex;
   align-items:center;
   justify-content: space-between;
+  text-decoration: none;
+  color: #000000;
 }
 
 @media screen and (max-width: 800px) {
   .student__portfolio-link {
     font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .student__portfolio-link {
+    font-size: 18px;
+    line-height: 28px;
   }
 }
 
@@ -170,5 +227,12 @@
 .student__link-img {
   height: 60px;
   width: 29px;
+}
+
+@media screen and (max-width: 450px) {
+  .student__link-img {
+    height: 28px;
+    width: 18px;
+  }
 }
 

@@ -26,19 +26,19 @@ function Student(props) {
         <nav>
           <ul className="student__portfolio-links">
             <li className="student__portfolio-container">
-              <a className="student__portfolio-link" rel="noreferrer">
+              <a className="student__portfolio-link" href="" rel="noreferrer">
                 Статичный сайт
                 <img className="student__link-img" src={StudentLinkImg} alt="ФотоСтудента" />
               </a>
             </li>
             <li className="student__portfolio-container">
-              <a className="student__portfolio-link" rel="noreferrer">
+              <a className="student__portfolio-link" href="" rel="noreferrer">
                 Адаптивный сайт
                 <img className="student__link-img" src={StudentLinkImg} alt="Ссылка" />
               </a>
             </li>
             <li className="student__portfolio-container">
-              <a className="student__portfolio-link" rel="noreferrer">
+              <a className="student__portfolio-link" href="" rel="noreferrer">
                 Одностраничное приложение
                 <img className="student__link-img" src={StudentLinkImg} alt="Ссылка" />
               </a>
