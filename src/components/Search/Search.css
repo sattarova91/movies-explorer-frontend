@@ -4,15 +4,23 @@
   padding: 70px;
 }
 
+@media screen and (max-width: 800px) {
+  .search {
+    padding: 80px 30px 110px 30px;
+  }
+}
+
 .search__find-button {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 18px;
   color: #FFFFFF;
   background: #3456F3;
   border-radius: 48px;
   border: 0;
-  padding: 8px 10.35px 8px 10.35px;
   width: 59px;
   height: 34px;
-  margin-right: 19px;
 }
 
 .search__find-input {
@@ -31,6 +39,7 @@
   flex-direction: row;
   align-items: center;
   width: 100%;
+  padding-right: 19px;
 }
 
 .search__img {
@@ -50,6 +59,12 @@
   padding: 25px;
 }
 
+@media screen and (max-width: 800px) {
+  .search__container {
+    padding: 19px;
+  }
+}
+
 .search__paragraph {
   font-style: normal;
   font-weight: normal;
@@ -63,6 +78,12 @@
   flex-direction: row;
   padding: 11px 5px 11px 30px;
   border-left: 1px solid #CBCBCB;
+}
+
+@media screen and (max-width: 800px) {
+  .search__settings {
+    padding: 7px 0 7px 19px;
+  }
 }
 
 .search__switch {

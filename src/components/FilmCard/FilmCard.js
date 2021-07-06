@@ -1,6 +1,5 @@
 import React from 'react';
 import './FilmCard.css';
-import SaveIcon from '../../images/save-button-icon.svg';
 
 function saveCard(evt) {
   evt.target.classList.toggle('film-card__save-button_saved');

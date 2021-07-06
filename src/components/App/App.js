@@ -4,8 +4,9 @@ import Movies from '../Movies/Movies';
 import Signup from '../Signup/Signup';
 import Signin from '../Signin/Signin';
 import Profile from '../Profile/Profile';
+import SavedMovies from '../SavedMovies/SavedMovies';
 import './App.css';
-//шрифты, signup кнопка, footer link margin bottom
+//шрифты, signup кнопка, footer link margin bottom, /movies find-button, separator,чтото пошло не так signup,
 function App() {
   return (
     <div className="page">
@@ -14,7 +15,7 @@ function App() {
           <Movies />
         </Route>
         <Route exact path="/savedmovies">
-          savedmovies
+          <SavedMovies />
         </Route>
         <Route exact path="/profile">
           <Profile />

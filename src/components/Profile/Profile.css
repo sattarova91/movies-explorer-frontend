@@ -1,10 +1,24 @@
 .profile {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+
+.profile__container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 74px 435px 70px 435px;
+  min-width: 410px;
+  padding: 74px 0px 70px 0px;
+}
+
+.profile__options {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
 }
 
 .profile__title {
@@ -22,7 +36,7 @@
   line-height: 16px;
   border: 0;
   background-color: transparent;
-  align-self: flex-end;
+  text-align: center;
 }
 
 .profile__logout-button {

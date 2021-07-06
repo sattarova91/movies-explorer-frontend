@@ -7,3 +7,18 @@
   grid-gap: 60px 30px;
 }
 
+@media screen and (max-width: 800px) {
+  .gallery {
+    padding: 70px 30px 63px 30px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 47px 30px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .gallery {
+    padding: 40px 10px 63px 10px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 39px;
+  }
+}

@@ -3,15 +3,20 @@
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  height: 100%;
-  padding: 70px 0 70px 0;
+  height: 100vh;
 }
 
 .signup__container {
   display: flex;
   flex-direction: column;
   max-width: 396px;
-  align-items: right;
+  padding: 70px 0 70px 0;
+}
+
+@media screen and (max-width: 800px) {
+  .signup__container {
+    padding: 232px 0 232px 0;
+  }
 }
 
 .signup__title {
@@ -44,6 +49,8 @@
   height: 45px;
   margin: 134px 0 16px 0;
 }
+
+
 
 .signup__field {
   border: 0;

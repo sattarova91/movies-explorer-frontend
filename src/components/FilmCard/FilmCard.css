@@ -3,6 +3,18 @@
   height: 201px;
 }
 
+@media screen and (max-width: 800px) {
+  .film-card__img {
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .film-card__img {
+    height: 168px;
+  }
+}
+
 .film-card {
   position: relative;
 }
@@ -16,12 +28,39 @@
   width: 95%;
 }
 
+@media screen and (max-width: 800px) {
+  .film-card__about {
+    margin: 25px auto 0 auto;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .film-card__about {
+    margin: 16px auto 0 auto;
+  }
+}
+
 .film-card__title {
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
   margin: 0;
+}
+
+@media screen and (max-width: 800px) {
+  .film-card__title {
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .film-card__title {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }
 
 .film-card__time {
@@ -35,14 +74,23 @@
   background-color: #F9F9F9;
   border-radius: 3px;
   color: #A0A0A0;
-  padding: 3px 4px;
   margin: 0 0 0 30px;
   height: 18px;
+  width: 52px;
 }
 
-.film-card__save-button {
-
+@media screen and (max-width: 800px) {
+  .film-card__time {
+    margin: 0 0 0 37px;
+  }
 }
+
+@media screen and (max-width: 450px) {
+  .film-card__time {
+    margin: 0 0 0 8px;
+  }
+}
+
 
 .film-card__save-button {
   font-size: 10px;
@@ -58,6 +106,7 @@
 }
 
 .film-card__save-button:before{
+  text-align: center;
   content: "Сохранить"
 }
 

@@ -18,15 +18,3 @@
 .button:focus {
   outline: none;
 }
-
-.logo {
-  width: 38px;
-  height: 38px;
-}
-
-.section-separator {
-  max-width: 1280px;
-  height: 1px;
-  background-color: #E8E8E8;
-  border: 0;
-}

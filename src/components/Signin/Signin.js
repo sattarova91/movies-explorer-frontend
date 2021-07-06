@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderLogo from '../../images/main-logo.svg';
+import Logo from '../Logo/Logo';
 import { Link } from 'react-router-dom';
 import './Signin.css';
 
@@ -7,7 +7,7 @@ function Signin(props) {
   return (
     <section className="signin">
       <div className="signin__container">
-        <img className="logo" alt="Логотип" src={HeaderLogo} />
+        <Logo />
         <h1 className="signin__title">Рады видеть!</h1>
         <form className="signin__form">
           <label className="signin__field-container">

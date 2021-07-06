@@ -1,11 +1,11 @@
 import React from 'react';
-import HeaderLogo from '../../images/main-logo.svg';
+import Logo from '../Logo/Logo';
 import './Header.css';
 
 function Header(props) {
   return (
     <div className={`header ${props.className}`}>
-      <img className="logo" alt="Логотип" src={HeaderLogo} />
+      <Logo />
       {props.children}
     </div>
   );
