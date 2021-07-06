@@ -5,6 +5,7 @@ import Signup from '../Signup/Signup';
 import Signin from '../Signin/Signin';
 import Profile from '../Profile/Profile';
 import SavedMovies from '../SavedMovies/SavedMovies';
+import NotFound from '../NotFound/NotFound';
 import './App.css';
 //шрифты, signup кнопка, footer link margin bottom, /movies find-button, separator,чтото пошло не так signup,
 function App() {
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route exact path="/signup">
           <Signup />
+        </Route>
+        <Route exact path="/404">
+          <NotFound />
         </Route>
         <Route exact path="/">
           <Main />
