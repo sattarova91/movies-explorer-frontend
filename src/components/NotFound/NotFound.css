@@ -37,6 +37,12 @@
   text-decoration: none;
 }
 
+@media screen and (max-width: 450px) {
+  .error-404__exit-button {
+    padding-bottom: 30px;
+  }
+}
+
 .error-404__container {
   display: flex;
   flex-direction: column;
