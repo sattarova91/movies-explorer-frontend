@@ -7,7 +7,7 @@ import Profile from '../Profile/Profile';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import NotFound from '../NotFound/NotFound';
 import './App.css';
-//шрифты, signup кнопка, footer link margin bottom, /movies find-button, separator,чтото пошло не так signup, вынести preloader,
+//шрифты, signup кнопка,чтото пошло не так signup, вынести preloader,
 function App() {
   return (
     <div className="page">

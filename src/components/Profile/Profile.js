@@ -17,10 +17,10 @@ function Profile(props) {
             <p className="profile__email">E-mail</p>
             <p className="profile__user-email">pochta@yandex.ru</p>
           </div>
-          <div className="profile__options">
+        </div>
+        <div className="profile__options">
           <button className="button profile__edit-button">Редактировать</button>
           <button className="button profile__logout-button">Выйти из аккаунта</button>
-          </div>
         </div>
       </section>
     </>

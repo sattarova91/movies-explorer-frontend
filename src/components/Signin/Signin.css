@@ -1,17 +1,41 @@
 .signin {
-  max-width: 1280px;
+  max-width: 396px;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
-  height: 100%;
-  padding: 70px 0 70px 0;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100vh;
+}
+
+@media screen and (max-width: 450px) {
+  .signin {
+    max-width: 260px;
+  }
 }
 
 .signin__container {
   display: flex;
   flex-direction: column;
-  max-width: 396px;
   align-items: right;
+  padding: 70px 0 0 0;
+}
+
+@media screen and (max-width: 800px) {
+  .signin__container {
+    padding: 232px 0 0 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .signin__container {
+    padding: 56px 0 0 0;
+    align-items: center;
+  }
+
+  .signin__field-container {
+    text-align: left;
+    width: 100%;
+  }
 }
 
 .signin__title {
@@ -40,9 +64,9 @@
   border-radius: 3px;
   border: 0;
   color: #FFFFFF;
-  min-width: 396px;
+  width: 100%;
   height: 45px;
-  margin: 221px 0 16px 0;
+  margin: 0 0 16px 0;
 }
 
 .signin__field {
@@ -59,6 +83,25 @@
   justify-content: center;
 }
 
+.signin__signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 70px;
+}
+
+@media screen and (max-width: 800px) {
+  .signin__signup {
+    padding-bottom: 232px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .signin__signup {
+    padding-bottom: 30px;
+  }
+}
+
 .signin__signup-subtitle {
   margin: 0;
   font-style: normal;
@@ -66,6 +109,13 @@
   font-size: 14px;
   line-height: 17px;
   color: #A0A0A0;
+}
+
+@media screen and (max-width: 450px) {
+  .signin__signup-subtitle {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }
 
 .signin__signup-link {
