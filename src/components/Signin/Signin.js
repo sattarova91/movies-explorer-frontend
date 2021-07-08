@@ -6,18 +6,17 @@ import './Signin.css';
 function Signin(props) {
   return (
     <form className="signin__form">
-
       <section className="signin">
         <div className="signin__container">
           <Logo />
           <h1 className="signin__title">Рады видеть!</h1>
           <label className="signin__field-container">
             <p className="signup__paragraph">E-mail</p>
-            <input id="email" className="signin__field" name="email" type="email" placeholder="?" />
+            <input id="email" className="signin__field" name="email" type="email" placeholder="E-mail"/>
           </label>
           <label className="signin__field-container">
             <p className="signup__paragraph">Пароль</p>
-            <input id="password" className="signin__field" name="password" type="password" placeholder="" />
+            <input id="password" className="signin__field" name="password" type="password" placeholder="Пароль" />
           </label>
         </div>
         <div className="signup__options">
