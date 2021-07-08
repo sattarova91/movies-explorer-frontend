@@ -4,7 +4,6 @@ import FilmCard from '../FilmCard/FilmCard';
 import './Gallery.css';
 
 function Gallery(props) {
-  console.log(props)
   return (
     <>
       <section className="gallery">

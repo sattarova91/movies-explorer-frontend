@@ -8,7 +8,7 @@ function saveCard(evt) {
 function MoviesCard(props) {
   return (
     <div className="film-card">
-      <img className="film-card__img" src={props.card.src} alt="" />
+      <img className="film-card__img" src={props.card.src} alt="изображенияФильма" />
       <div className="film-card__about">
         <p className="film-card__title">{props.card.title}</p>
         <p className="film-card__time">{props.card.time}</p>

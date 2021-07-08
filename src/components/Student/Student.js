@@ -28,7 +28,7 @@ function Student(props) {
             <li className="student__portfolio-container">
               <a className="student__portfolio-link" href="https://github.com/sattarova91/how-to-learn" target="_blank" rel="noreferrer">
                 Статичный сайт
-                <img className="student__link-img" src={StudentLinkImg} alt="ФотоСтудента" />
+                <img className="student__link-img" src={StudentLinkImg} alt="Ссылка" />
               </a>
             </li>
             <li className="student__portfolio-container">
