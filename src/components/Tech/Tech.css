@@ -92,7 +92,7 @@
   list-style-type: none;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 700px) {
   .tech__icons {
     grid-template-rows: repeat(4, 57px);
     grid-template-columns: 84px 84px;

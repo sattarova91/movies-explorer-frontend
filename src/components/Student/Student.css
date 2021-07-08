@@ -39,9 +39,10 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 650px) {
   .student__info {
     flex-direction: column-reverse;
+    align-items:center;
     padding: 60px 0 70px 0;
   }
 }
