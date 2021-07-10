@@ -11,31 +11,38 @@ import filmImg from '../../images/film-img.png';
 const initialCards = [
   { src: filmImg,
     title: 'Киноальманах «100 лет дизайна»',
-    time: '1ч 17м'
+    time: '1ч 17м',
+    saved: false,
   },
   { src: filmImg,
     title: 'Киноальманах «100 лет дизайна»',
-    time: '1ч 17м'
+    time: '1ч 17м',
+    saved: false,
   },
   { src: filmImg,
     title: 'Киноальманах «100 лет дизайна»',
-    time: '1ч 17м'
+    time: '1ч 17м',
+    saved: false,
   },
   { src: filmImg,
     title: 'Киноальманах «100 лет дизайна»',
-    time: '1ч 17м'
+    time: '1ч 17м',
+    saved: false,
   },
   { src: filmImg,
     title: 'Киноальманах «100 лет дизайна»',
-    time: '1ч 17м'
+    time: '1ч 17м',
+    saved: false,
   },
   { src: filmImg,
     title: 'Киноальманах «100 лет дизайна»',
-    time: '1ч 17м'
+    time: '1ч 17м',
+    saved: false,
   },
   { src: filmImg,
     title: 'Киноальманах «100 лет дизайна»',
-    time: '1ч 17м'
+    time: '1ч 17м',
+    saved: false,
   },
 ]
 

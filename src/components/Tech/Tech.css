@@ -38,9 +38,11 @@
 .tech__subtitle {
   font-style: normal;
   font-weight: normal;
+  text-align: center;
   font-size: 50px;
   line-height: 58px;
   margin: 0 0 26px 0;
+  max-width: 460px;
 }
 
 @media screen and (max-width: 800px) {
@@ -122,11 +124,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 90px 295px 0px 295px;
+  padding: 90px 0 0px 0;
 }
 
 @media screen and (max-width: 800px) {
   .tech__container {
-    padding: 80px 34px 0px 34px;
+    padding: 80px 0 0px 0;
   }
 }

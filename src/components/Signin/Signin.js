@@ -12,11 +12,11 @@ function Signin(props) {
           <h1 className="signin__title">Рады видеть!</h1>
           <label className="signin__field-container">
             <p className="signup__paragraph">E-mail</p>
-            <input id="email" className="signin__field" name="email" type="email" placeholder="E-mail"/>
+            <input id="email" className="signin__field" name="email" type="email" placeholder="E-mail" required />
           </label>
           <label className="signin__field-container">
             <p className="signup__paragraph">Пароль</p>
-            <input id="password" className="signin__field" name="password" type="password" placeholder="Пароль" />
+            <input id="password" className="signin__field" name="password" type="password" placeholder="Пароль" required />
           </label>
         </div>
         <div className="signup__options">

@@ -12,15 +12,15 @@ function Signup(props) {
           <h1 className="signup__title">Добро пожаловать!</h1>
           <label className="signup__field-container">
             <p className="signup__paragraph">Имя</p>
-            <input id="name" className="signup__field" name="name" type="name" placeholder="Имя" />
+            <input id="name" className="signup__field" name="name" type="name" placeholder="Имя" required />
           </label>
           <label className="signup__field-container">
             <p className="signup__paragraph">E-mail</p>
-            <input id="email" className="signup__field" name="email" type="email" placeholder="E-mail" />
+            <input id="email" className="signup__field" name="email" type="email" placeholder="E-mail" required />
           </label>
           <label className="signup__field-container">
             <p className="signup__paragraph">Пароль</p>
-            <input id="password" className="signup__field signup__field_password" name="password" type="password" placeholder="Пароль" />
+            <input id="password" className="signup__field signup__field_password" name="password" type="password" placeholder="Пароль" required />
           </label>
           <span className="signup__error">Что-то пошло не так...</span>
         </div>

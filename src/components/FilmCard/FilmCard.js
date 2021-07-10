@@ -13,7 +13,8 @@ function MoviesCard(props) {
         <p className="film-card__title">{props.card.title}</p>
         <p className="film-card__time">{props.card.time}</p>
       </div>
-      <button className="button film-card__save-button" onClick={saveCard}></button>
+      <button className={"button film-card__save-button" + (props.card.saved ? " hidden" : "")} onClick={saveCard}></button>
+      <button className={"button film-card__detele-button" + (props.card.saved  ? ""  : " hidden")} onClick={saveCard}></button>
     </div>
   )
 }
