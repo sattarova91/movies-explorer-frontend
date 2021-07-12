@@ -1,7 +1,6 @@
 import React from 'react';
 import MainLogo from '../../images/landing-logo.svg';
 import './Landing.css';
-import { Link } from 'react-router-dom';
 
 function Landing(props) {
   return (
