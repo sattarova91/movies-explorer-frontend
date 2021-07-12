@@ -1,0 +1,34 @@
+.popup {
+  position: fixed;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .2s,opacity .2s ease-in-out;
+  z-index: 99;
+}
+
+.popup_is-opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup__container {
+  background-color: #FFFFFF;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.popup__close {
+  background-image: url(../../images/popup-close.svg);
+  background-position: center;
+  background-color: transparent;
+  width: 22px;
+  height: 22px;
+  border: 0;
+}

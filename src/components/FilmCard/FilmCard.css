@@ -1,0 +1,142 @@
+.film-card__img {
+  height: 201px;
+}
+
+@media screen and (max-width: 890px) {
+  .film-card__img {
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .film-card__img {
+    height: 168px;
+  }
+}
+
+.film-card {
+  position: relative;
+}
+
+.film-card__about {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 14px auto 0 auto;
+  width: 95%;
+}
+
+@media screen and (max-width: 890px) {
+  .film-card__about {
+    margin: 25px auto 0 auto;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .film-card__about {
+    margin: 16px auto 0 auto;
+  }
+}
+
+.film-card__title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+}
+
+@media screen and (max-width: 890px) {
+  .film-card__title {
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .film-card__title {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.film-card__time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 10px;
+  background-color: #F9F9F9;
+  border-radius: 3px;
+  color: #A0A0A0;
+  margin: 0 0 0 30px;
+  height: 18px;
+  width: 52px;
+}
+
+@media screen and (max-width: 890px) {
+  .film-card__time {
+    margin: 0 0 0 37px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .film-card__time {
+    margin: 0 0 0 8px;
+  }
+}
+
+
+.film-card__save-button {
+  font-size: 10px;
+  line-height: 9px;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: #F9F9F9;
+  border-radius: 30px;
+  border: 0;
+  width: 72px;
+  height: 21px;
+}
+
+.film-card__save-button:before{
+  text-align: center;
+  content: "Сохранить"
+}
+
+.film-card__save-button_saved {
+  border-radius: 30px;
+  background: #FF3055;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../../images/save-button-icon.svg);
+  width: 21px;
+  height: 21px;
+}
+
+.film-card__save-button_saved:before{
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+}
+
+.film-card__detele-button {
+  background-image: url(../../images/movies-delete.svg);
+  width: 21px;
+  height: 21px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #F9F9F9;
+  border-radius: 30px;
+  border: 0;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+

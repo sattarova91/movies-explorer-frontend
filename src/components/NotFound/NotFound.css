@@ -1,0 +1,50 @@
+.error-404 {
+  margin: 0 auto;
+  height: 100vh;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.error-404__title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 140px;
+  line-height: 169px;
+  margin: 0;
+  padding-top: 246px;
+}
+
+.error-404__paragraph {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  margin: 5px 0 0 0;
+}
+
+.error-404__exit-button {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #3456F3;
+  justify-self: flex-end;
+  padding-bottom: 60px;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 450px) {
+  .error-404__exit-button {
+    padding-bottom: 30px;
+  }
+}
+
+.error-404__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

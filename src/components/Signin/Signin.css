@@ -1,0 +1,129 @@
+.signin {
+  max-width: 396px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100vh;
+}
+
+@media screen and (max-width: 450px) {
+  .signin {
+    max-width: 260px;
+  }
+}
+
+.signin__container {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  padding: 70px 0 0 0;
+}
+
+@media screen and (max-width: 800px) {
+  .signin__container {
+    padding: 232px 0 0 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .signin__container {
+    padding: 56px 0 0 0;
+    align-items: center;
+  }
+
+  .signin__field-container {
+    text-align: left;
+    width: 100%;
+  }
+}
+
+.signin__title {
+  margin: 40px 0 16px 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.signin__paragraph {
+  margin: 24px 0 0 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #A0A0A0;
+}
+
+.signin__submit-button {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  background: #3456F3;
+  border-radius: 3px;
+  border: 0;
+  color: #FFFFFF;
+  width: 100%;
+  height: 45px;
+  margin: 0 0 16px 0;
+}
+
+.signin__field {
+  border: 0;
+  border-bottom: 2px solid #E8E8E8;
+  padding-bottom: 10px;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.signin__signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.signin__signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 70px;
+}
+
+@media screen and (max-width: 800px) {
+  .signin__signup {
+    padding-bottom: 232px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .signin__signup {
+    padding-bottom: 30px;
+  }
+}
+
+.signin__signup-subtitle {
+  margin: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #A0A0A0;
+}
+
+@media screen and (max-width: 450px) {
+  .signin__signup-subtitle {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.signin__signup-link {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #3456F3;
+  text-decoration: none;
+  margin-left: 6px;
+}
