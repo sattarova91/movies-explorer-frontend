@@ -3,6 +3,7 @@ import { Route, Switch, useHistory } from 'react-router-dom';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import API from '../../utils/api';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -70,15 +71,17 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Switch>
-          <Route exact path="/movies">
-            <Movies />
-          </Route>
-          <Route exact path="/savedmovies">
-            <SavedMovies />
-          </Route>
-          <Route exact path="/profile">
-            <Profile onLogout={handleLogout} />
-          </Route>
+
+          <ProtectedRoute exact path="/movies" component={Movies}
+            loggedIn={loggedIn}
+          />
+          <ProtectedRoute exact path="/savedmovies" component={SavedMovies}
+            loggedIn={loggedIn}
+          />
+          <ProtectedRoute exact path="/profile" component={Profile}
+            loggedIn={loggedIn}
+            onLogout={handleLogout}
+          />
           <Route exact path="/signin">
             <Signin onLogin={handleLogin} />
           </Route>
