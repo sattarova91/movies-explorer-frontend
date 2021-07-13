@@ -30,7 +30,7 @@ function Signin({ onLogin }) {
     API.signIn({ email: userData.email, password: userData.password }).then((loggedInUser) => {
       setUserData({ email: '', password: '' });
       onLogin(loggedInUser);
-      history.push('/');
+      history.push('/movies');
     }).catch((err) => {
       console.log({
         level: 'error',

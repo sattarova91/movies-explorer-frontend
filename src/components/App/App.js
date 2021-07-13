@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import API from '../../utils/api';
@@ -16,22 +16,31 @@ import './App.css';
 
 function App() {
   ///// auth
-  const [currentUser, setCurrentUser] = React.useState({ name: '', about: '' });
+  const EMPTY_USER = { name: '', about: '' };
+  const [currentUser, setCurrentUser] = React.useState(EMPTY_USER);
   const [loggedIn, setLoggedIn] = useState(false);
+
+  const history = useHistory();
 
 
   function handleLogin(loggedInUser) {
-    console.log(loggedInUser)
     setCurrentUser(loggedInUser);
     setLoggedIn(true);
+  }
+
+  function handleLogout() {
+    API.signOut().then(() => {
+      setLoggedIn(false);
+      setCurrentUser(EMPTY_USER);
+    });
   }
 
   function authCheck() {
     API.currentUser().then((user) => {
       if (user._id) {
-        //setLoggedIn(true);
+        setLoggedIn(true);
         setCurrentUser(user);
-        //history.push('/');
+        history.push('/movies');
       }
     }).catch((err) => {
       console.log(err);
@@ -68,7 +77,7 @@ function App() {
             <SavedMovies />
           </Route>
           <Route exact path="/profile">
-            <Profile />
+            <Profile onLogout={handleLogout} />
           </Route>
           <Route exact path="/signin">
             <Signin onLogin={handleLogin} />

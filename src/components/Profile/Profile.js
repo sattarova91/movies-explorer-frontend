@@ -1,8 +1,16 @@
 import React from 'react';
 import './Profile.css';
+import { useHistory } from 'react-router-dom';
 import AuthHeader from '../AuthHeader/AuthHeader';
 
-function Profile(props) {
+function Profile({ onLogout }) {
+  const history = useHistory();
+
+  function handleLogout() {
+    onLogout();
+    history.push('/');
+  }
+  
   return (
     <>
       <AuthHeader />
@@ -20,7 +28,7 @@ function Profile(props) {
         </div>
         <div className="profile__options">
           <button className="button profile__edit-button">Редактировать</button>
-          <button className="button profile__logout-button">Выйти из аккаунта</button>
+          <button className="button profile__logout-button" onClick={handleLogout}>Выйти из аккаунта</button>
         </div>
       </section>
     </>
