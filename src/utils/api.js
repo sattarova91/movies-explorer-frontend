@@ -62,8 +62,8 @@ class MoviesApi extends Api {
 
   //////////// movieAPI
 
-  signUp({ email, password }) {
-    return this.post('signup', { email, password });
+  signUp({ name, email, password }) {
+    return this.post('signup', { name, email, password });
   }
 
   signIn({ email, password }) {
