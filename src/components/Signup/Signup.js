@@ -6,7 +6,7 @@ import './Signup.css';
 import API from '../../utils/api';
 
 
-function Signup(props) {
+function Signup({ onLogin }) {
   const history = useHistory();
   const [userData, setUserData] = useState({
     name: '',
@@ -34,7 +34,16 @@ function Signup(props) {
           level: 'info',
           message: 'Вы успешно зарегистрировались!'
         });
-        history.push('/signin');
+        API.signIn({ email: userData.email, password: userData.password }).then((loggedInUser) => {
+          setUserData({ email: '', password: '' });
+          onLogin(loggedInUser);
+          history.push('/movies');
+        }).catch((err) => {
+          console.log({
+            level: 'error',
+            message: 'Что-то пошло не так!'
+          });
+        });
       } else {
         console.log({
           level: 'error',

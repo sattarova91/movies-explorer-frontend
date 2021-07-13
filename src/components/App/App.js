@@ -86,7 +86,7 @@ function App() {
             <Signin onLogin={handleLogin} />
           </Route>
           <Route exact path="/signup">
-            <Signup />
+            <Signup onLogin={handleLogin} />
           </Route>
           <Route exact path="/404">
             <NotFound />
