@@ -52,12 +52,8 @@ class MoviesApi extends Api {
     return this.get('users/me');
   }
 
-  updateCurrentUser({ name, about }) {
-    return this.patch('users/me', { name, about });
-  }
-
-  updateCurrentUserAvatar(avatar) {
-    return this.patch('users/me/avatar', { avatar: avatar });
+  updateCurrentUser({ name, email }) {
+    return this.patch('users/me', { name, email });
   }
 
   //////////// movieAPI

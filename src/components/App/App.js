@@ -67,6 +67,14 @@ function App() {
 
   /////
 
+  function handleUpdateUser(user) {
+    API.updateCurrentUser(user).then((updatedUser) => {
+      setCurrentUser(updatedUser);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -81,6 +89,7 @@ function App() {
           <ProtectedRoute exact path="/profile" component={Profile}
             loggedIn={loggedIn}
             onLogout={handleLogout}
+            onUpdateUser={handleUpdateUser}
           />
           <Route exact path="/signin">
             <Signin onLogin={handleLogin} />
