@@ -92,16 +92,16 @@ function App() {
             onUpdateUser={handleUpdateUser}
           />
           <Route exact path="/signin">
-            <Signin onLogin={handleLogin} />
+            <Signin onLogin={handleLogin}  loggedIn={loggedIn} />
           </Route>
           <Route exact path="/signup">
-            <Signup onLogin={handleLogin} />
+            <Signup onLogin={handleLogin}  loggedIn={loggedIn} />
           </Route>
           <Route exact path="/404">
-            <NotFound />
+            <NotFound  loggedIn={loggedIn} />
           </Route>
           <Route exact path="/">
-            <Main />
+            <Main  loggedIn={loggedIn} />
           </Route>
         </Switch>
       </div>

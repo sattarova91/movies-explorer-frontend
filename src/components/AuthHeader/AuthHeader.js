@@ -7,7 +7,7 @@ import Avatar from '../../images/header-img-account.svg';
 
 function AuthHeader(props) {
   return (
-    <Header className="header__auth">
+    <Header className={`header__auth ${props.className}`}>
       <nav className="header__nav">
         <div className="header__movies">
           <Link to="/movies"><button className="button header__button-movies">Фильмы</button></Link>

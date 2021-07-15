@@ -9,16 +9,15 @@ import Tech from '../Tech/Tech';
 
 
 
-function Main(props) {
+function Main({ loggedIn }) {
   return (
     <>
-      <LandingHeader />
+      <LandingHeader loggedIn={loggedIn} />
       <Landing />
       <About />
       <Tech />
       <Student />
-      <Footer>
-      </Footer>
+      <Footer />
     </>
   )
 }

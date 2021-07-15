@@ -49,7 +49,7 @@ const initialCards = [
 function Movies(props) {
   return (
     <>
-      <AuthHeader />
+      <AuthHeader class="theme_ligth" />
       <Search />
       <SectionSeparator />
       <Gallery cards={initialCards} />

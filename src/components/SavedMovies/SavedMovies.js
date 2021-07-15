@@ -48,7 +48,7 @@ const initialCards = [
 function SavedMovies(props) {
   return (
     <>
-      <AuthHeader />
+      <AuthHeader class="theme_ligth" />
       <Search />
       <SectionSeparator />
       <Gallery cards={initialCards} />
