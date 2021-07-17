@@ -58,7 +58,7 @@ function Signin({ onLogin }) {
               <h1 className="signin__title">Рады видеть!</h1>
               <label className="signin__field-container">
                 <p className="signup__paragraph">E-mail</p>
-                <input id="email" className="signin__field"
+                <input className="signin__field"
                     type="email"
                     name="email"
                     placeholder="E-mail"
@@ -69,7 +69,7 @@ function Signin({ onLogin }) {
               </label>
               <label className="signin__field-container">
                 <p className="signup__paragraph">Пароль</p>
-                <input id="password" className="signin__field"
+                <input className="signin__field"
                     type="password"
                     name="password"
                     placeholder="Пароль"
@@ -80,7 +80,7 @@ function Signin({ onLogin }) {
               </label>
             </div>
             <div className="signup__options">
-              <button className="button signin__submit-button" type="submit">Войти</button>
+              <button className="button signin__submit-button" type="submit" disabled={errors.email || errors.password}>Войти</button>
               <div className="signin__signup">
                 <p className="signin__signup-subtitle">Ещё не зарегистрированы?</p>
                 <Link to="/signup" className="signin__signup-link">Регистрация</Link>
@@ -90,7 +90,6 @@ function Signin({ onLogin }) {
         </form>
       )}
     </Formik>
-
   );
 }
 
