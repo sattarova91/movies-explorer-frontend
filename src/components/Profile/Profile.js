@@ -54,42 +54,40 @@ function Profile({ onLogout, onUpdateUser }) {
           handleBlur,
           handleSubmit,
         }) => (
-          <>
-            <form className="profile__form" onSubmit={handleSubmit}>
-              <section className="profile">
-                <div className="profile__container">
-                  <h1 className="profile__title">Привет, {values.name}!</h1>
-                  <div className="profile__name-info">
-                    <p className="profile__name">Имя</p>
-                    <input className="profile__user-name"
-                      type="text"
-                      name="name"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.name} />
-                  </div>
-                  <div className="profile__email-info">
-                    <p className="profile__email">E-mail</p>
-                    <input className="profile__user-email"
-                      type="email"
-                      name="email"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.email} />
-                  </div>
+          <form className="profile__form" onSubmit={handleSubmit}>
+            <section className="profile">
+              <div className="profile__container">
+                <h1 className="profile__title">Привет, {values.name}!</h1>
+                <div className="profile__name-info">
+                  <p className="profile__name">Имя</p>
+                  <input className="profile__user-name"
+                    type="text"
+                    name="name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.name} />
                 </div>
-                <div className="profile__options">
-                  <span className="profile__field-error">{errors.name || errors.email}</span>
-                  <button className={"button profile__save-button" + (isEditMode ? "" : " hidden")} type="submit" disabled={errors.name || errors.email} >Сохранить</button>
-                  <button className={"button profile__edit-button" + (isEditMode ? " hidden" : "")} type="button"
-                    onClick={() => {
-                      setIsEditMode(true)
-                    }} >Редактировать</button>
-                  <button className="button profile__logout-button" onClick={handleLogout}>Выйти из аккаунта</button>
+                <div className="profile__email-info">
+                  <p className="profile__email">E-mail</p>
+                  <input className="profile__user-email"
+                    type="email"
+                    name="email"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.email} />
                 </div>
-              </section>
-            </form>
-          </>
+              </div>
+              <div className="profile__options">
+                <span className="profile__field-error">{errors.name || errors.email}</span>
+                <button className={"button profile__save-button" + (isEditMode ? "" : " hidden")} type="submit" disabled={errors.name || errors.email} >Сохранить</button>
+                <button className={"button profile__edit-button" + (isEditMode ? " hidden" : "")} type="button"
+                  onClick={() => {
+                    setIsEditMode(true)
+                  }} >Редактировать</button>
+                <button className="button profile__logout-button" onClick={handleLogout}>Выйти из аккаунта</button>
+              </div>
+            </section>
+          </form>
         )}
       </Formik>
     </>

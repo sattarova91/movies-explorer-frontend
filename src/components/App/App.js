@@ -55,7 +55,6 @@ function App() {
   React.useEffect(() => {
     if (currentUser._id) {
       Promise.all([
-        console.log(currentUser)
         //API.getInitialCards()
       ]).then(([apiCards]) => {
         //setCards(apiCards);
