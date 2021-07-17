@@ -24,8 +24,11 @@ button:disabled {
   display: none;
 }
 
-.theme_dark {
+.theme_dark  {
   background-color: #073042;
+}
+
+.theme_dark a {
   color: #FFFFFF;
 }
 
@@ -33,4 +36,12 @@ button:disabled {
   background-color: #FFFFFF;
 }
 
+.theme_light a {
+  color: #000000;
+}
 
+a:hover {
+  transition: 0.3s linear;
+  opacity: 0.6;
+  cursor: pointer;
+}

@@ -10,11 +10,11 @@ function AuthHeader(props) {
     <Header className={`header__auth ${props.className}`}>
       <nav className="header__nav">
         <div className="header__movies">
-          <Link to="/movies"><button className="button header__button-movies">Фильмы</button></Link>
-          <Link to="/savedmovies"><button className="button header__button-saved-movies">Сохранённые фильмы</button></Link>
+          <Link className="button header__button-movies" to="/movies">Фильмы</Link>
+          <Link className="button header__button-saved-movies" to="/savedmovies">Сохранённые фильмы</Link>
         </div>
         <div className="header__account">
-          <Link to="/profile"><button className="button header__button-account">Аккаунт</button></Link>
+          <Link className="button header__button-account" to="/profile">Аккаунт</Link>
           <img className="header__img-account" alt="аватар" src={Avatar} />
         </div>
       </nav>
