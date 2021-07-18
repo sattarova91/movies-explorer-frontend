@@ -1,6 +1,6 @@
 .film-card__img {
   height: 201px;
-  max-width: 100%;
+  width: 100%;
 }
 
 @media screen and (max-width: 890px) {
