@@ -9,24 +9,35 @@ import AuthHeader from '../AuthHeader/AuthHeader';
 import { BEATFILM_API } from '../../utils/api';
 
 function Movies(props) {
-  const [initialCards, setIitialCards] = React.useState([]);
+  const [allCards, setAllCards] = React.useState([]);
+  const [filteredCards, setFilteredCards] = React.useState([]);
 
   React.useEffect(() => {
     Promise.all([
       BEATFILM_API.getAllMovies()
     ]).then(([allMovies]) => {
-      setIitialCards(allMovies);
+      setAllCards(allMovies);
+      setFilteredCards(allMovies);
     }).catch((err) => {
       console.log(err);
     });
   }, []);
 
+  function handleSearch(searchStr) {
+    searchStr = searchStr.toLowerCase();
+    setFilteredCards(
+      allCards.filter((card) => {
+        return ( card.nameRU && card.nameRU.toLowerCase().includes(searchStr) ) || ( card.nameEN && card.nameEN.toLowerCase().includes(searchStr));
+      })
+    )
+  }
+
   return (
     <>
       <AuthHeader className="theme_light" />
-      <Search />
+      <Search onSearch={handleSearch} />
       <SectionSeparator />
-      <Gallery cards={initialCards} />
+      <Gallery cards={filteredCards} />
       <Footer />
     </>
   )
