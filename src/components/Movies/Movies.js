@@ -6,47 +6,21 @@ import SectionSeparator from '../SectionSeparator/SectionSeparator';
 
 import './Movies.css';
 import AuthHeader from '../AuthHeader/AuthHeader';
-import filmImg from '../../images/film-img.png';
-
-const initialCards = [
-  { src: filmImg,
-    title: 'Киноальманах «100 лет дизайна»',
-    time: '1ч 17м',
-    saved: false,
-  },
-  { src: filmImg,
-    title: 'Киноальманах «100 лет дизайна»',
-    time: '1ч 17м',
-    saved: false,
-  },
-  { src: filmImg,
-    title: 'Киноальманах «100 лет дизайна»',
-    time: '1ч 17м',
-    saved: false,
-  },
-  { src: filmImg,
-    title: 'Киноальманах «100 лет дизайна»',
-    time: '1ч 17м',
-    saved: false,
-  },
-  { src: filmImg,
-    title: 'Киноальманах «100 лет дизайна»',
-    time: '1ч 17м',
-    saved: false,
-  },
-  { src: filmImg,
-    title: 'Киноальманах «100 лет дизайна»',
-    time: '1ч 17м',
-    saved: false,
-  },
-  { src: filmImg,
-    title: 'Киноальманах «100 лет дизайна»',
-    time: '1ч 17м',
-    saved: false,
-  },
-]
+import { BEATFILM_API } from '../../utils/api';
 
 function Movies(props) {
+  const [initialCards, setIitialCards] = React.useState([]);
+
+  React.useEffect(() => {
+    Promise.all([
+      BEATFILM_API.getAllMovies()
+    ]).then(([allMovies]) => {
+      setIitialCards(allMovies);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }, []);
+
   return (
     <>
       <AuthHeader className="theme_light" />

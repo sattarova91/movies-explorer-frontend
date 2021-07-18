@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import API from '../../utils/api';
+import { API } from '../../utils/api';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import Main from '../Main/Main';
@@ -52,17 +52,7 @@ function App() {
     authCheck();
   }, []);
 
-  React.useEffect(() => {
-    if (currentUser._id) {
-      Promise.all([
-        //API.getInitialCards()
-      ]).then(([apiCards]) => {
-        //setCards(apiCards);
-      }).catch((err) => {
-        console.log(err);
-      });
-    }
-  }, [currentUser]);
+
 
   /////
 

@@ -13,8 +13,8 @@ class Api {
     return this.fetch('PATCH', url, data);
   }
 
-  get(url, headers = {}) {
-    return this.fetch('GET', url, undefined, headers);
+  get(url, options = {}) {
+    return this.fetch('GET', url, undefined, options);
   }
 
   post(url, data) {
@@ -29,14 +29,14 @@ class Api {
     return this.fetch('PUT', url, data);
   }
 
-  fetch(method, url, data = undefined, headers = {}) {
-    return fetch(`${this.baseUrl}/${url}`, {
+  fetch(method, url, data = undefined, options = {}) {
+    return fetch(`${this.baseUrl}/${url}`, Object.assign({
       method,
-      headers: Object.assign(this.headers, headers),
+      headers: this.headers,
       'Content-Type': 'application/json',
       credentials: 'include',
       body: JSON.stringify(data)
-    }).then(res => {
+    }, options)).then(res => {
       if (res.ok) {
         return res.json();
       }
@@ -75,6 +75,12 @@ class MoviesApi extends Api {
   }
 }
 
+class BeatfilmMoviesApi extends Api {
+  getAllMovies() {
+    return this.get('', {credentials: 'omit'});
+  }
+}
+
 const API = new MoviesApi({
   baseUrl: REACT_APP_API_ADDR,
   headers: {
@@ -82,5 +88,13 @@ const API = new MoviesApi({
   }
 });
 
-export default API;
+
+const BEATFILM_API = new BeatfilmMoviesApi({
+  baseUrl: 'https://api.nomoreparties.co/beatfilm-movies',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+
+export { API, BEATFILM_API }  ;
 

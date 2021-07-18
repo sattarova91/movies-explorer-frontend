@@ -4,16 +4,11 @@ import Logo from '../Logo/Logo';
 import { Formik } from 'formik';
 import './Signup.css';
 
-import API from '../../utils/api';
+import { API } from '../../utils/api';
 
 
 function Signup({ onLogin }) {
   const history = useHistory();
-
-  function handleSubmit(evt) {
-    evt.preventDefault();
-
-  }
 
   return (
     <Formik

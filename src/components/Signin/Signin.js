@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { Formik } from 'formik';
 import './Signin.css';
 
-import API from '../../utils/api';
+import { API } from '../../utils/api';
 
 
 function Signin({ onLogin }) {
