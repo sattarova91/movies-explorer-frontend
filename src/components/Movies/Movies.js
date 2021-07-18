@@ -17,7 +17,6 @@ function Movies(props) {
       BEATFILM_API.getAllMovies()
     ]).then(([allMovies]) => {
       setAllCards(allMovies);
-      setFilteredCards(allMovies);
     }).catch((err) => {
       console.log(err);
     });
