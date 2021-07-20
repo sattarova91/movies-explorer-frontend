@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -19,7 +19,7 @@ function App() {
   ///// auth
   const EMPTY_USER = { name: '', about: '' };
   const [currentUser, setCurrentUser] = React.useState(EMPTY_USER);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(false);
 
   const history = useHistory();
 
@@ -48,7 +48,7 @@ function App() {
     });
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     authCheck();
   }, []);
 
