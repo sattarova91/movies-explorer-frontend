@@ -37,7 +37,7 @@ function Gallery({ cards, onSave, onDelete }) {
   const cardsShown = [];
   for (let i = 0; (i < currentCardsNum && i < cards.length); i++) {
       const card = cards[i];
-      cardsShown.push(<FilmCard card={card} key={card.id} onSave={onSave} onDelete={onDelete} />)
+      cardsShown.push(<FilmCard card={card} key={card.movieId} onSave={onSave} onDelete={onDelete} />)
   }
 
   return (

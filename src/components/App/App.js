@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { API } from '../../utils/api';
+import API from '../../utils/api';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import Main from '../Main/Main';

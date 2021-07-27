@@ -46,6 +46,21 @@ class Api {
 }
 
 class MoviesApi extends Api {
+  constructor() {
+    super({
+      baseUrl: REACT_APP_API_ADDR,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    this.__BeatfilmMoviesApi = new BeatfilmMoviesApi({
+      baseUrl: 'https://api.nomoreparties.co/beatfilm-movies',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
   //////////// userAPI
 
   getCurrentUser() {
@@ -79,39 +94,62 @@ class MoviesApi extends Api {
   }
 
   saveMovie(movie) {
-    return this.post('movies', this.__fixMovie(movie));
+    delete movie._id;
+    return this.post('movies', movie);
   }
 
-  getSavedMovies(ownerId) {
-    return this.get('movies').then((cards) => {
-      return cards.filter((card) => {
-        return card.owner === ownerId
+  getAllMovies(ownerId) {
+    return Promise.all([
+      this.get('movies'),
+      this.__BeatfilmMoviesApi.getAllMovies()
+    ]).then(([savedMovies, allMovies]) => {
+      const res = [];
+
+      allMovies.forEach((card) => {
+        const idx = savedMovies.findIndex((savedCard) => {
+          return (
+            card.movieId === savedCard.movieId &&
+            savedCard.owner === ownerId
+          )
+        });
+        if (idx !== -1) {
+          card._id = savedMovies[idx]._id;
+        } else {
+          card._id = null;
+        }
+
+        res[card.movieId] = card;
       })
-    })
-  }
 
-  __fixMovie(card) {
-    const apiCard = {
-      country: card.country.substring(0, 30),
-      director: card.director.substring(0, 30),
-      duration: card.duration,
-      year: parseInt(card.year),
-      description: card.description.substring(0, 120),
-      image: card.image.url,
-      trailer: card.trailerLink,
-      thumbnail: card.image.url,
-      movieId: card.id,
-      nameRU: card.nameRU.substring(0, 30),
-      nameEN: card.nameEN.substring(0, 30),
-    };
-    return apiCard;
+      return res;
+    })
   }
 }
 
 class BeatfilmMoviesApi extends Api {
   __fixMovie(card) {
-    card.image.url = 'https://api.nomoreparties.co' + card.image.url;
-    return card;
+    function trim(str, len) {
+      str = str ? str : "";
+      return str.substring(0, len);
+    }
+    function imgUrl(url) {
+      return 'https://api.nomoreparties.co' + url;
+    }
+
+    const resCard = {
+      country: trim(card.country, 30),
+      director: trim(card.director, 30),
+      duration: card.duration,
+      year: parseInt(card.year),
+      description: trim(card.description, 120),
+      image:imgUrl(card.image.url),
+      trailer: card.trailerLink,
+      thumbnail: imgUrl(card.image.url),
+      movieId: card.id,
+      nameRU: trim(card.nameRU, 30),
+      nameEN: trim(card.nameEN, 30),
+    };
+    return resCard;
   }
 
   getAllMovies() {
@@ -123,19 +161,7 @@ class BeatfilmMoviesApi extends Api {
   }
 }
 
-const API = new MoviesApi({
-  baseUrl: REACT_APP_API_ADDR,
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
 
 
-const BEATFILM_API = new BeatfilmMoviesApi({
-  baseUrl: 'https://api.nomoreparties.co/beatfilm-movies',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
-
-export { API, BEATFILM_API }  ;
+const API = new MoviesApi();
+export default API;

@@ -19,7 +19,6 @@ function FilmCard({card, onSave, onDelete}) {
         console.log(err);
       });
     } else {
-      console.log(card);
       onSave(card).then((res) => {
         setSaved(true);
         card.saved = true;
@@ -31,8 +30,8 @@ function FilmCard({card, onSave, onDelete}) {
   }
 
   return (
-    <div className="film-card" key={card.id}>
-      <img className="film-card__img" src={card.image.url} alt="изображенияФильма" />
+    <div className="film-card">
+      <img className="film-card__img" src={card.image} alt="изображенияФильма" />
       <div className="film-card__about">
         <p className="film-card__title">{card.nameRU}</p>
         <p className="film-card__time">{minutesToHours(card.duration)}</p>
