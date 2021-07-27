@@ -52,10 +52,6 @@ function App() {
     authCheck();
   }, []);
 
-  function onFilmSave(card) {
-    return API.saveMovie(card);
-  }
-
   /////
 
   function handleUpdateUser(user) {
@@ -72,7 +68,7 @@ function App() {
         <Switch>
 
           <ProtectedRoute exact path="/movies" component={Movies}
-            loggedIn={loggedIn} onSave={onFilmSave}
+            loggedIn={loggedIn}
           />
           <ProtectedRoute exact path="/savedmovies" component={SavedMovies}
             loggedIn={loggedIn}

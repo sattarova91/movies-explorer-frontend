@@ -74,14 +74,26 @@ class MoviesApi extends Api {
     return this.get('users/me');
   }
 
+  deleteMovie(movieId) {
+    return this.delete(`movies/${movieId}`);
+  }
+
   saveMovie(movie) {
     return this.post('movies', this.__fixMovie(movie));
   }
 
+  getSavedMovies(ownerId) {
+    return this.get('movies').then((cards) => {
+      return cards.filter((card) => {
+        return card.owner === ownerId
+      })
+    })
+  }
+
   __fixMovie(card) {
     const apiCard = {
-      country: card.country,
-      director: card.director,
+      country: card.country.substring(0, 30),
+      director: card.director.substring(0, 30),
       duration: card.duration,
       year: parseInt(card.year),
       description: card.description.substring(0, 120),
@@ -89,8 +101,8 @@ class MoviesApi extends Api {
       trailer: card.trailerLink,
       thumbnail: card.image.url,
       movieId: card.id,
-      nameRU: card.nameRU,
-      nameEN: card.nameEN,
+      nameRU: card.nameRU.substring(0, 30),
+      nameEN: card.nameEN.substring(0, 30),
     };
     return apiCard;
   }

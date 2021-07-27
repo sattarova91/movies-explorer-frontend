@@ -7,14 +7,27 @@ function minutesToHours(allMinutes) {
   return `${hours}ч ${minutes}м`;
 }
 
-function FilmCard({card, onSave}) {
+function FilmCard({card, onSave, onDelete}) {
+  const [saved, setSaved] = React.useState(card.saved);
 
-  function saveCard(evt) {
-    onSave(card).then(() => {
-      evt.target.classList.toggle('film-card__save-button_saved');
-    }).catch((err) => {
-      console.log(err);
-    });
+  function toggleSaveCard(evt) {
+    if (saved) {
+      onDelete(card).then(() => {
+        setSaved(false);
+        card.saved = false;
+      }).catch((err) => {
+        console.log(err);
+      });
+    } else {
+      console.log(card);
+      onSave(card).then((res) => {
+        setSaved(true);
+        card.saved = true;
+        card._id = res._id;
+      }).catch((err) => {
+        console.log(err);
+      });
+    }
   }
 
   return (
@@ -24,8 +37,7 @@ function FilmCard({card, onSave}) {
         <p className="film-card__title">{card.nameRU}</p>
         <p className="film-card__time">{minutesToHours(card.duration)}</p>
       </div>
-      <button className={"button film-card__save-button" + (card.saved ? " hidden" : "")} onClick={saveCard}></button>
-      <button className={"button film-card__detele-button" + (card.saved  ? ""  : " hidden")} onClick={saveCard}></button>
+      <button className={"button film-card__save-button" + (saved ? " film-card__save-button_saved " : "")} onClick={toggleSaveCard}></button>
     </div>
   )
 }
