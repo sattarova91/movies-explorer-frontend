@@ -8,7 +8,7 @@ import './Movies.css';
 import AuthHeader from '../AuthHeader/AuthHeader';
 import { BEATFILM_API } from '../../utils/api';
 
-function Movies(props) {
+function Movies({ onSave }) {
   const [filteredCards, setFilteredCards] = React.useState([]);
 
   function handleSearch(searchStr) {
@@ -32,7 +32,7 @@ function Movies(props) {
       <AuthHeader className="theme_light" />
       <Search onSearch={handleSearch} />
       <SectionSeparator />
-      <Gallery cards={filteredCards} />
+      <Gallery cards={filteredCards} onSave={onSave} />
       <Footer />
     </>
   )

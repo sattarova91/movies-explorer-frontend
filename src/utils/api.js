@@ -73,11 +73,41 @@ class MoviesApi extends Api {
   currentUser() {
     return this.get('users/me');
   }
+
+  saveMovie(movie) {
+    return this.post('movies', this.__fixMovie(movie));
+  }
+
+  __fixMovie(card) {
+    const apiCard = {
+      country: card.country,
+      director: card.director,
+      duration: card.duration,
+      year: parseInt(card.year),
+      description: card.description.substring(0, 120),
+      image: card.image.url,
+      trailer: card.trailerLink,
+      thumbnail: card.image.url,
+      movieId: card.id,
+      nameRU: card.nameRU,
+      nameEN: card.nameEN,
+    };
+    return apiCard;
+  }
 }
 
 class BeatfilmMoviesApi extends Api {
+  __fixMovie(card) {
+    card.image.url = 'https://api.nomoreparties.co' + card.image.url;
+    return card;
+  }
+
   getAllMovies() {
-    return this.get('', {credentials: 'omit'});
+    return this.get('', {credentials: 'omit'}).then(
+      (cards) => {
+        return cards.map(this.__fixMovie);
+      }
+    )
   }
 }
 
@@ -97,4 +127,3 @@ const BEATFILM_API = new BeatfilmMoviesApi({
 });
 
 export { API, BEATFILM_API }  ;
-

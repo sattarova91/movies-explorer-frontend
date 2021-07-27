@@ -3,7 +3,7 @@ import React from 'react';
 import FilmCard from '../FilmCard/FilmCard';
 import './Gallery.css';
 
-function Gallery({ cards }) {
+function Gallery({ cards, onSave }) {
   const [currentCardsNum, setCurrentCardsNum] = React.useState(0);
 
   React.useEffect(() => {
@@ -37,7 +37,7 @@ function Gallery({ cards }) {
   const cardsShown = [];
   for (let i = 0; (i < currentCardsNum && i < cards.length); i++) {
       const card = cards[i];
-      cardsShown.push(<FilmCard card={card} key={card.id} />)
+      cardsShown.push(<FilmCard card={card} key={card.id} onSave={onSave} />)
   }
 
   return (
