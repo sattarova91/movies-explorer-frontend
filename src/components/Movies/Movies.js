@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '../Footer/Footer';
 import Search from '../Search/Search';
 import Gallery from '../Gallery/Gallery';
+import FilmCard from '../FilmCard/FilmCard';
 import SectionSeparator from '../SectionSeparator/SectionSeparator';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -14,7 +15,6 @@ function Movies(props) {
   const [filteredCards, setFilteredCards] = React.useState([]);
 
   function onSave(card) {
-    console.log(card);
     return API.saveMovie(card);
   }
 
@@ -36,12 +36,55 @@ function Movies(props) {
     });
   }
 
+  const [currentCardsNum, setCurrentCardsNum] = React.useState(0);
+
+  React.useEffect(() => {
+    // перерисовываем когда был нажат Поиск
+    initCardsNum = initCardsNum();
+    setCurrentCardsNum(initCardsNum);
+  }, [filteredCards]);
+
+  function initCardsNum() {
+    const { innerWidth } = window;
+    let initCardsNum = 0;
+    if (innerWidth >= 1280) {
+      initCardsNum = 12;
+    } else if (innerWidth >= 768) {
+      initCardsNum = 8;
+    } else {
+      initCardsNum = 5;
+    }
+
+    return initCardsNum;
+  }
+
+  function moreCardsNum() {
+    const { innerWidth } = window;
+    return innerWidth >= 1280 ? 3 : 2;
+  }
+
+  function handleMoreCardsClick() {
+    setCurrentCardsNum(currentCardsNum + moreCardsNum());
+  }
+
+  const cardsShown = [];
+  for (let i = 0; (i < currentCardsNum && i < filteredCards.length); i++) {
+      const card = filteredCards[i];
+      cardsShown.push(<FilmCard card={card} key={card.movieId} onSave={onSave} onDelete={() => {}} />)
+  }
+
+
   return (
     <>
       <AuthHeader className="theme_light" />
       <Search onSearch={handleSearch} />
       <SectionSeparator />
-      <Gallery cards={filteredCards} onSave={onSave} onDelete={onDelete} />
+      <Gallery>
+        {cardsShown}
+      </Gallery>
+      <div className={`gallery__more ${currentCardsNum >= filteredCards.length ? "hidden" : "" }`}>
+        <button className="button movies__more-button" onClick={handleMoreCardsClick}>Ещё</button>
+      </div>
       <Footer />
     </>
   )

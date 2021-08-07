@@ -98,31 +98,35 @@ class MoviesApi extends Api {
     return this.post('movies', movie);
   }
 
+  getSavedMovies(ownerId) {
+    return this.get('movies').then((savedMovies) => {
+      return savedMovies.filter((savedCard) => {
+        return (savedCard.owner === ownerId)
+      });
+    });
+  }
+
   getAllMovies(ownerId) {
     return Promise.all([
-      this.get('movies'),
+      this.getSavedMovies(ownerId),
       this.__BeatfilmMoviesApi.getAllMovies()
     ]).then(([savedMovies, allMovies]) => {
-      const res = [];
-
-      allMovies.forEach((card) => {
-        const idx = savedMovies.findIndex((savedCard) => {
-          return (
-            card.movieId === savedCard.movieId &&
-            savedCard.owner === ownerId
-          )
-        });
+      return allMovies.map((card) => {
+        const idx = this.movieIndex(savedMovies, card.movieId);
         if (idx !== -1) {
           card._id = savedMovies[idx]._id;
         } else {
           card._id = null;
         }
-
-        res[card.movieId] = card;
-      })
-
-      return res;
+        return card;
+      });
     })
+  }
+
+  movieIndex(movies, movieId) {
+    return movies.findIndex((movie) => {
+      return (movieId === movie.movieId)
+    });
   }
 }
 

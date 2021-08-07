@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '../Footer/Footer';
 import Search from '../Search/Search';
 import Gallery from '../Gallery/Gallery';
+import FilmCard from '../FilmCard/FilmCard';
 import SectionSeparator from '../SectionSeparator/SectionSeparator';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -12,49 +13,51 @@ import API from '../../utils/api';
 
 function SavedMovies(props) {
   const currentUser = React.useContext(CurrentUserContext);
+  const [savedCards, setSavedCards] = React.useState([]);
   const [filteredCards, setFilteredCards] = React.useState([]);
 
-  function onSave(card) {
-    return API.saveMovie(card);
-  }
-
   function onDelete(card) {
-    return API.deleteMovie(card._id);
+    return API.deleteMovie(card._id).then(() => {
+      const idx = API.movieIndex(savedCards, card.movieId);
+      savedCards.splice(idx, 1);
+      setSavedCards([...savedCards]);
+    })
   }
-
 
   function handleSearch(searchStr) {
     searchStr = searchStr.toLowerCase();
 
-    API.getAllMovies(currentUser._id).then((allMovies) => {
-      setFilteredCards(
-        allMovies.filter((card) => {
-          return ( card.nameRU && card.nameRU.toLowerCase().includes(searchStr) ) || ( card.nameEN && card.nameEN.toLowerCase().includes(searchStr));
-        })
-      );
-    }).catch((err) => {
-      console.log(err);
-    });
+    setFilteredCards(
+      savedCards.filter((card) => {
+        return ( card.nameRU && card.nameRU.toLowerCase().includes(searchStr) ) || ( card.nameEN && card.nameEN.toLowerCase().includes(searchStr));
+      })
+    );
   }
 
   React.useEffect(() => {
-    API.getAllMovies(currentUser._id).then((allMovies) => {
-      setFilteredCards(
-        allMovies.filter((card) => {
-          return (card._id !== null);
-        })
-      );
+    API.getSavedMovies(currentUser._id).then((savedCards) => {
+      setSavedCards(savedCards);
+      setFilteredCards(savedCards);
     }).catch((err) => {
       console.log(err);
     });
   }, []);
+
+
+  const cardsShown = [];
+  for (let i = 0; i < filteredCards.length; i++) {
+      const card = filteredCards[i];
+      cardsShown.push(<FilmCard card={card} key={card.movieId} onSave={() => {}} onDelete={onDelete} />)
+  }
 
   return (
     <>
       <AuthHeader className="theme_light" />
       <Search onSearch={handleSearch} />
       <SectionSeparator />
-      <Gallery cards={filteredCards} onSave={onSave} onDelete={onDelete} />
+      <Gallery>
+        {cardsShown}
+      </Gallery>
       <Footer />
     </>
   )

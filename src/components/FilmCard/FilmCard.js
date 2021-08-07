@@ -8,20 +8,19 @@ function minutesToHours(allMinutes) {
 }
 
 function FilmCard({card, onSave, onDelete}) {
-  const [saved, setSaved] = React.useState(card.saved);
+  const [saved, setSaved] = React.useState(card._id !== null);
 
   function toggleSaveCard(evt) {
     if (saved) {
-      onDelete(card).then(() => {
+      onDelete(card).then((res) => {
         setSaved(false);
-        card.saved = false;
+        card._id = null;
       }).catch((err) => {
         console.log(err);
       });
     } else {
       onSave(card).then((res) => {
         setSaved(true);
-        card.saved = true;
         card._id = res._id;
       }).catch((err) => {
         console.log(err);
