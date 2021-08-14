@@ -13,18 +13,18 @@
 .movies__more {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 0 52px 0;
+  padding: 0 70px 52px 70px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 890px) {
   .movies__more {
-    padding: 0px 0x 52px 0;
+    padding: 30px 0x 52px 30px;
   }
 }
 
 @media screen and (max-width: 450px) {
   .movies__more {
-    padding: 0px 0 52px 0;
+    padding: 10px 0 52px 10px;
   }
 }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '../Footer/Footer';
 import Search from '../Search/Search';
 import Gallery from '../Gallery/Gallery';
+import Preloader from '../Preloader/Preloader';
 import FilmCard from '../FilmCard/FilmCard';
 import SectionSeparator from '../SectionSeparator/SectionSeparator';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -14,6 +15,7 @@ import { search } from '../../utils/utils';
 function Movies(props) {
   const currentUser = React.useContext(CurrentUserContext);
   const [filteredCards, setFilteredCards] = React.useState([]);
+  const [preloader, setPreloader] = React.useState(false);
 
   function onSave(card) {
     // card._id присутствует только у сохранённого фильма
@@ -27,10 +29,14 @@ function Movies(props) {
   }
 
   function handleSearch(searchStr, isShort) {
+    setFilteredCards([]);
+    setPreloader(true)
     API.getAllMovies(currentUser._id).then((allMovies) => {
       setFilteredCards(search(allMovies, searchStr, isShort));
+      setPreloader(false)
     }).catch((err) => {
       console.log(err);
+      setPreloader(false)
     });
   }
 
@@ -86,8 +92,9 @@ function Movies(props) {
       <SectionSeparator />
       <Gallery>
         {cardsShown}
+        <Preloader className={preloader ? "" : "hidden"}/>
       </Gallery>
-      <div className={`gallery__more ${currentCardsNum >= filteredCards.length ? "hidden" : "" }`}>
+      <div className={`movies__more ${currentCardsNum >= filteredCards.length ? "hidden" : "" }`}>
         <button className="button movies__more-button" onClick={handleMoreCardsClick}>Ещё</button>
       </div>
       <Footer />
