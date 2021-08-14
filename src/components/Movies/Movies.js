@@ -9,28 +9,26 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './Movies.css';
 import AuthHeader from '../AuthHeader/AuthHeader';
 import API from '../../utils/api';
+import { search } from '../../utils/utils';
 
 function Movies(props) {
   const currentUser = React.useContext(CurrentUserContext);
   const [filteredCards, setFilteredCards] = React.useState([]);
 
   function onSave(card) {
-    return API.saveMovie(card);
+    // card._id присутствует только у сохранённого фильма
+    API.saveMovie(card).then((res) => {
+      const idx = API.movieIndex(filteredCards, card.movieId);
+      filteredCards[idx]._id = res._id;
+      setFilteredCards([...filteredCards]);
+    }).catch((err) => {
+      console.log(err);
+    });
   }
 
-  function onDelete(card) {
-    return API.deleteMovie(card._id);
-  }
-
-  function handleSearch(searchStr) {
-    searchStr = searchStr.toLowerCase();
-
+  function handleSearch(searchStr, isShort) {
     API.getAllMovies(currentUser._id).then((allMovies) => {
-      setFilteredCards(
-        allMovies.filter((card) => {
-          return ( card.nameRU && card.nameRU.toLowerCase().includes(searchStr) ) || ( card.nameEN && card.nameEN.toLowerCase().includes(searchStr));
-        })
-      );
+      setFilteredCards(search(allMovies, searchStr, isShort));
     }).catch((err) => {
       console.log(err);
     });
@@ -40,8 +38,7 @@ function Movies(props) {
 
   React.useEffect(() => {
     // перерисовываем когда был нажат Поиск
-    initCardsNum = initCardsNum();
-    setCurrentCardsNum(initCardsNum);
+    setCurrentCardsNum(initCardsNum());
   }, [filteredCards]);
 
   function initCardsNum() {
@@ -69,8 +66,16 @@ function Movies(props) {
 
   const cardsShown = [];
   for (let i = 0; (i < currentCardsNum && i < filteredCards.length); i++) {
-      const card = filteredCards[i];
-      cardsShown.push(<FilmCard card={card} key={card.movieId} onSave={onSave} onDelete={() => {}} />)
+    const card = filteredCards[i];
+    cardsShown.push(
+      <FilmCard card={card} key={card.movieId}>
+        <button
+          className="button movies__save-button"
+          disabled={card._id}
+          onClick={() => {onSave(card)}}
+        ></button>
+      </FilmCard>
+    )
   }
 
 

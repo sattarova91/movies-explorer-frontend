@@ -6,7 +6,7 @@ import searchImg from '../../images/search-img.svg';
 function Search({ onSearch }) {
   return (
     <Formik
-      initialValues={{ search: '' }}
+      initialValues={{ search: '', isShort: false }}
       validate={values => {
         const errors = {};
         if (!values.search) {
@@ -15,7 +15,7 @@ function Search({ onSearch }) {
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
-        onSearch(values.search)
+        onSearch(values.search, values.isShort)
         setSubmitting(false);
       }}
     >
@@ -43,7 +43,12 @@ function Search({ onSearch }) {
               </div>
               <div className="search__settings">
                 <label className="search__switch">
-                  <input type="checkbox" className="search__checkbox" id="checkbox" />
+                  <input className="search__checkbox"
+                    type="checkbox"
+                    name="isShort"
+                    onChange={handleChange}
+                    checked={values.isShort}
+                  />
                   <span className="search__slider"></span>
                 </label>
                 <p className="search__paragraph">Короткометражки</p>
@@ -65,7 +70,12 @@ function Search({ onSearch }) {
             </div>
             <div className="search__settings_mobile">
               <label className="search__switch">
-                <input type="checkbox" className="search__checkbox" id="checkbox" />
+                <input className="search__checkbox"
+                  type="checkbox"
+                  name="isShort"
+                  onChange={handleChange}
+                  checked={values.isShort}
+                />
                 <span className="search__slider"></span>
               </label>
               <p className="search__paragraph">Короткометражки</p>

@@ -140,6 +140,7 @@ class BeatfilmMoviesApi extends Api {
       return 'https://api.nomoreparties.co' + url;
     }
 
+    // данные из beatfilm зачастую не проходят валидацию по нашим требованиям
     const resCard = {
       country: trim(card.country, 30),
       director: trim(card.director, 30),
@@ -150,8 +151,8 @@ class BeatfilmMoviesApi extends Api {
       trailer: card.trailerLink,
       thumbnail: imgUrl(card.image.url),
       movieId: card.id,
-      nameRU: trim(card.nameRU, 30),
-      nameEN: trim(card.nameEN, 30),
+      nameRU: trim(card.nameRU ? card.nameRU : card.nameRU, 30),
+      nameEN: trim(card.nameEN ? card.nameEN : card.nameRU, 30),
     };
     return resCard;
   }

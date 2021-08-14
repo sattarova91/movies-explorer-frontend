@@ -28,3 +28,38 @@
   }
 }
 
+
+.movies__save-button {
+  font-size: 10px;
+  line-height: 9px;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: #F9F9F9;
+  border-radius: 30px;
+  border: 0;
+  width: 72px;
+  height: 21px;
+}
+
+.movies__save-button:before{
+  text-align: center;
+  content: "Сохранить"
+}
+
+.movies__save-button:disabled {
+  border-radius: 30px;
+  background: #FF3055;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../../images/save-button-icon.svg);
+  width: 21px;
+  height: 21px;
+}
+
+.movies__save-button:disabled:before{
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+}
