@@ -7,8 +7,6 @@ import About from '../About/About';
 import Student from '../Student/Student';
 import Tech from '../Tech/Tech';
 
-
-
 function Main({ loggedIn }) {
   return (
     <>
@@ -19,7 +17,7 @@ function Main({ loggedIn }) {
       <Student />
       <Footer />
     </>
-  )
+  );
 }
 
 export default Main;

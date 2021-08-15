@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './MobileHeader.css';
 import MenuImg from '../../images/menu-icon.svg';
 import Popup from '../Popup/Popup';
-import { Link } from 'react-router-dom';
 import Avatar from '../../images/header-img-account.svg';
 
-function MobileHeader(props) {
+function MobileHeader() {
   const [isPopupOpened, setIsPopupOpened] = React.useState(false);
 
   function closePopup() {
@@ -19,7 +20,7 @@ function MobileHeader(props) {
   return (
     <>
       <nav className="header__mobile-nav">
-        <button className="header__mobile-menu-button" onClick={openPopup}>
+        <button className="header__mobile-menu-button" type="button" onClick={openPopup}>
           <img className="header__mobile-menu-img" src={MenuImg} alt="меню" />
         </button>
         <Popup name="mobile-menu" isOpen={isPopupOpened} onClose={closePopup}>
@@ -35,7 +36,7 @@ function MobileHeader(props) {
         </Popup>
       </nav>
     </>
-  )
+  );
 }
 
 export default MobileHeader;

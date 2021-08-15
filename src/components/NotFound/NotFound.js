@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './NotFound.css';
 
-function NotFound(props) {
+function NotFound() {
   return (
     <section className="error-404">
       <div className="error-404__container">
@@ -11,7 +11,7 @@ function NotFound(props) {
       </div>
       <Link className="button error-404__exit-button" to="/">Назад</Link>
     </section>
-  )
+  );
 }
 
 export default NotFound;

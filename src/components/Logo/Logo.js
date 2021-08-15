@@ -1,12 +1,12 @@
 import React from 'react';
-import HeaderLogo from '../../images/main-logo.svg';
-import './Logo.css';
 import { Link } from 'react-router-dom';
 
+import HeaderLogo from '../../images/main-logo.svg';
+import './Logo.css';
 
-function Logo(props) {
+function Logo() {
   return (
-      <Link to="/"><img className="logo" alt="Логотип" src={HeaderLogo} /></Link>
+    <Link to="/"><img className="logo" alt="Логотип" src={HeaderLogo} /></Link>
   );
 }
 

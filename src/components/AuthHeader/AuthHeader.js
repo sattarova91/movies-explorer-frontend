@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import Header from '../Header/Header';
 import MobileHeader from '../MobileHeader/MobileHeader';
 import './AuthHeader.css';
-import { Link } from 'react-router-dom';
 import Avatar from '../../images/header-img-account.svg';
 
-function AuthHeader(props) {
+function AuthHeader({ className }) {
   return (
-    <Header className={`header__auth ${props.className}`}>
+    <Header className={`header__auth ${className}`}>
       <nav className="header__nav">
         <div className="header__movies">
           <Link className="button header__button-movies" to="/movies">Фильмы</Link>

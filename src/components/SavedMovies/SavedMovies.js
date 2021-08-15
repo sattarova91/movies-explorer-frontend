@@ -4,29 +4,28 @@ import Search from '../Search/Search';
 import Gallery from '../Gallery/Gallery';
 import FilmCard from '../FilmCard/FilmCard';
 import SectionSeparator from '../SectionSeparator/SectionSeparator';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 import './SavedMovies.css';
 import AuthHeader from '../AuthHeader/AuthHeader';
-import API from '../../utils/api';
-import { search } from '../../utils/utils';
+import API from '../../utils/MainApi';
+import { search, movieIndex } from '../../utils/utils';
 
-
-function SavedMovies(props) {
+function SavedMovies() {
   const currentUser = React.useContext(CurrentUserContext);
   const [savedCards, setSavedCards] = React.useState([]);
   const [filteredCards, setFilteredCards] = React.useState([]);
 
   function onDelete(card) {
     return API.deleteMovie(card._id).then(() => {
-      const savedIdx = API.movieIndex(savedCards, card.movieId);
+      const savedIdx = movieIndex(savedCards, card.movieId);
       savedCards.splice(savedIdx, 1);
       setSavedCards([...savedCards]);
 
-      const filteredIdx = API.movieIndex(filteredCards, card.movieId);
+      const filteredIdx = movieIndex(filteredCards, card.movieId);
       filteredCards.splice(filteredIdx, 1);
       setFilteredCards([...filteredCards]);
-    })
+    });
   }
 
   function handleSearch(searchStr, short) {
@@ -34,26 +33,26 @@ function SavedMovies(props) {
   }
 
   React.useEffect(() => {
-    API.getSavedMovies(currentUser._id).then((savedCards) => {
-      setSavedCards(savedCards);
-      setFilteredCards([...savedCards]);
+    API.getSavedMovies(currentUser._id).then((apiSavedCards) => {
+      setSavedCards(apiSavedCards);
+      setFilteredCards([...apiSavedCards]);
     }).catch((err) => {
       console.log(err);
     });
   }, []);
 
-
   const cardsShown = [];
-  for (let i = 0; i < filteredCards.length; i++) {
-  const card = filteredCards[i];
+  for (let i = 0; i < filteredCards.length; i += 1) {
+    const card = filteredCards[i];
     cardsShown.push(
       <FilmCard card={card} key={card.movieId}>
         <button
           className="button saved-movies__delete-button"
-          onClick={() => {onDelete(card)}}
-        ></button>
-      </FilmCard>
-    )
+          type="button"
+          onClick={() => { onDelete(card); }}
+        />
+      </FilmCard>,
+    );
   }
 
   return (
@@ -66,7 +65,7 @@ function SavedMovies(props) {
       </Gallery>
       <Footer />
     </>
-  )
+  );
 }
 
 export default SavedMovies;

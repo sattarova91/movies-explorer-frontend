@@ -1,5 +1,5 @@
 import React from 'react';
-//import Preloader from '../Preloader/Preloader';
+// import Preloader from '../Preloader/Preloader';
 import './Gallery.css';
 
 function Gallery({ children }) {
@@ -11,7 +11,7 @@ function Gallery({ children }) {
         </div>
       </section>
     </>
-  )
+  );
 }
 
 export default Gallery;

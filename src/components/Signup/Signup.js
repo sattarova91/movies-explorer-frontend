@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import Logo from '../Logo/Logo';
 import { Formik } from 'formik';
+import Logo from '../Logo/Logo';
 import './Signup.css';
 
-import API from '../../utils/api';
-
+import API from '../../utils/MainApi';
 
 function Signup({ onLogin }) {
   const history = useHistory();
@@ -13,7 +12,7 @@ function Signup({ onLogin }) {
   return (
     <Formik
       initialValues={{ password: '', email: '' }}
-      validate={values => {
+      validate={(values) => {
         const errors = {};
         if (!values.email) {
           errors.email = 'Обязательное поле';
@@ -42,12 +41,12 @@ function Signup({ onLogin }) {
         API.signUp({
           name: values.name,
           email: values.email,
-          password: values.password
+          password: values.password,
         }).then((regUser) => {
           if (regUser._id) {
             console.log({
               level: 'info',
-              message: 'Вы успешно зарегистрировались!'
+              message: 'Вы успешно зарегистрировались!',
             });
             API.signIn({ email: values.email, password: values.password }).then((loggedInUser) => {
               onLogin(loggedInUser);
@@ -55,19 +54,21 @@ function Signup({ onLogin }) {
             }).catch((err) => {
               console.log({
                 level: 'error',
-                message: 'Что-то пошло не так!'
+                message: 'Что-то пошло не так!',
+                err,
               });
             });
           } else {
             console.log({
               level: 'error',
-              message: 'Что-то пошло не так!'
+              message: 'Что-то пошло не так!',
             });
           }
         }).catch((err) => {
           console.log({
             level: 'error',
-            message: 'Что-то пошло не так!'
+            message: 'Что-то пошло не так!',
+            err,
           });
         });
         setSubmitting(false);
@@ -87,33 +88,39 @@ function Signup({ onLogin }) {
               <h1 className="signup__title">Добро пожаловать!</h1>
               <label className="signup__field-container">
                 <p className="signup__paragraph">Имя</p>
-                <input className="signup__field"
-                    type="text"
-                    name="name"
-                    placeholder="Имя"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.name} />
+                <input
+                  className="signup__field"
+                  type="text"
+                  name="name"
+                  placeholder="Имя"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.name}
+                />
               </label>
               <label className="signup__field-container">
                 <p className="signup__paragraph">E-mail</p>
-                <input className="signup__field"
-                    type="email"
-                    name="email"
-                    placeholder="E-mail"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.email} />
+                <input
+                  className="signup__field"
+                  type="email"
+                  name="email"
+                  placeholder="E-mail"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                />
               </label>
               <label className="signup__field-container">
                 <p className="signup__paragraph">Пароль</p>
-                <input className="signup__field"
-                    type="password"
-                    name="password"
-                    placeholder="Пароль"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.password} />
+                <input
+                  className="signup__field"
+                  type="password"
+                  name="password"
+                  placeholder="Пароль"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.password}
+                />
               </label>
               <span className="signup__error">{errors.name || errors.email || errors.password}</span>
             </div>
@@ -128,7 +135,7 @@ function Signup({ onLogin }) {
         </form>
       )}
     </Formik>
-  )
+  );
 }
 
 export default Signup;

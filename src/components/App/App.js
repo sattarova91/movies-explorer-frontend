@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import API from '../../utils/api';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import API from '../../utils/MainApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import Main from '../Main/Main';
@@ -14,15 +14,13 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import NotFound from '../NotFound/NotFound';
 import './App.css';
 
-
 function App() {
-  ///// auth
+  /// // auth
   const EMPTY_USER = { name: '', about: '' };
   const [currentUser, setCurrentUser] = React.useState(EMPTY_USER);
   const [loggedIn, setLoggedIn] = React.useState(false);
 
   const history = useHistory();
-
 
   function handleLogin(loggedInUser) {
     setCurrentUser(loggedInUser);
@@ -52,7 +50,7 @@ function App() {
     authCheck();
   }, []);
 
-  /////
+  /// //
 
   function handleUpdateUser(user) {
     API.updateCurrentUser(user).then((updatedUser) => {
@@ -67,28 +65,37 @@ function App() {
       <div className="page">
         <Switch>
 
-          <ProtectedRoute exact path="/movies" component={Movies}
+          <ProtectedRoute
+            exact
+            path="/movies"
+            component={Movies}
             loggedIn={loggedIn}
           />
-          <ProtectedRoute exact path="/savedmovies" component={SavedMovies}
+          <ProtectedRoute
+            exact
+            path="/savedmovies"
+            component={SavedMovies}
             loggedIn={loggedIn}
           />
-          <ProtectedRoute exact path="/profile" component={Profile}
+          <ProtectedRoute
+            exact
+            path="/profile"
+            component={Profile}
             loggedIn={loggedIn}
             onLogout={handleLogout}
             onUpdateUser={handleUpdateUser}
           />
           <Route exact path="/signin">
-            <Signin onLogin={handleLogin}  loggedIn={loggedIn} />
+            <Signin onLogin={handleLogin} loggedIn={loggedIn} />
           </Route>
           <Route exact path="/signup">
-            <Signup onLogin={handleLogin}  loggedIn={loggedIn} />
+            <Signup onLogin={handleLogin} loggedIn={loggedIn} />
           </Route>
           <Route exact path="/404">
-            <NotFound  loggedIn={loggedIn} />
+            <NotFound loggedIn={loggedIn} />
           </Route>
           <Route exact path="/">
-            <Main  loggedIn={loggedIn} />
+            <Main loggedIn={loggedIn} />
           </Route>
         </Switch>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.css';
 
-function Footer(props) {
+function Footer() {
   return (
     <footer className="footer">
       <p className="footer__paragraph">Учебный проект Яндекс.Практикум х&nbsp;BeatFilm.</p>
@@ -16,7 +16,7 @@ function Footer(props) {
         </nav>
       </div>
     </footer>
-  )
+  );
 }
 
 export default Footer;

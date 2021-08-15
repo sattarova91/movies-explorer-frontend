@@ -1,12 +1,13 @@
 import React from 'react';
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect } from 'react-router-dom';
 
-const ProtectedRoute = ({ component: Component, ...props }) => {
-  return (
-    <Route>
-      {() => props.loggedIn ? <Component {...props} /> : <Redirect to="./signin" />}
-    </Route>
-  )
-};
+const ProtectedRoute = ({ component: Component, ...props }) => (
+  <Route>
+    {
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      () => (props.loggedIn ? <Component {...props} /> : <Redirect to="./signin" />)
+    }
+  </Route>
+);
 
 export default ProtectedRoute;

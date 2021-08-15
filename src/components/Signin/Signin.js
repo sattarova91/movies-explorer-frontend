@@ -1,11 +1,10 @@
 import React from 'react';
-import Logo from '../Logo/Logo';
 import { Link, useHistory } from 'react-router-dom';
 import { Formik } from 'formik';
+import Logo from '../Logo/Logo';
 import './Signin.css';
 
-import API from '../../utils/api';
-
+import API from '../../utils/MainApi';
 
 function Signin({ onLogin }) {
   const history = useHistory();
@@ -13,7 +12,7 @@ function Signin({ onLogin }) {
   return (
     <Formik
       initialValues={{ password: '', email: '' }}
-      validate={values => {
+      validate={(values) => {
         const errors = {};
         if (!values.email) {
           errors.email = 'Обязательное поле';
@@ -38,7 +37,8 @@ function Signin({ onLogin }) {
         }).catch((err) => {
           console.log({
             level: 'error',
-            message: 'Что-то пошло не так!'
+            message: 'Что-то пошло не так!',
+            err,
           });
         });
         setSubmitting(false);
@@ -58,24 +58,28 @@ function Signin({ onLogin }) {
               <h1 className="signin__title">Рады видеть!</h1>
               <label className="signin__field-container">
                 <p className="signup__paragraph">E-mail</p>
-                <input className="signin__field"
-                    type="email"
-                    name="email"
-                    placeholder="E-mail"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.email} />
+                <input
+                  className="signin__field"
+                  type="email"
+                  name="email"
+                  placeholder="E-mail"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                />
                 <span className="signin__field-error">{errors.email}</span>
               </label>
               <label className="signin__field-container">
                 <p className="signup__paragraph">Пароль</p>
-                <input className="signin__field"
-                    type="password"
-                    name="password"
-                    placeholder="Пароль"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.password} />
+                <input
+                  className="signin__field"
+                  type="password"
+                  name="password"
+                  placeholder="Пароль"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.password}
+                />
                 <span className="signin__field-error">{errors.password}</span>
               </label>
             </div>
