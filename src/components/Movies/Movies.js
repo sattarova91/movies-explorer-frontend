@@ -16,6 +16,9 @@ function Movies(props) {
   const currentUser = React.useContext(CurrentUserContext);
   const [filteredCards, setFilteredCards] = React.useState([]);
   const [preloader, setPreloader] = React.useState(false);
+  const [infoMessage, setInfoMessage] = React.useState("");
+
+
 
   function onSave(card) {
     // card._id присутствует только у сохранённого фильма
@@ -29,14 +32,24 @@ function Movies(props) {
   }
 
   function handleSearch(searchStr, isShort) {
+    setInfoMessage("");
     setFilteredCards([]);
     setPreloader(true)
     API.getAllMovies(currentUser._id).then((allMovies) => {
-      setFilteredCards(search(allMovies, searchStr, isShort));
+      const res = search(allMovies, searchStr, isShort);
+      setFilteredCards(res);
       setPreloader(false)
+      if (! res.length) {
+        setInfoMessage("ничего не найдено");
+      }
     }).catch((err) => {
       console.log(err);
       setPreloader(false)
+      setInfoMessage(
+        "Во время запроса произошла ошибка." +
+        " Возможно, проблема с соединением или сервер недоступен." +
+        " Подождите немного и попробуйте ещё раз"
+      );
     });
   }
 
@@ -84,7 +97,6 @@ function Movies(props) {
     )
   }
 
-
   return (
     <>
       <AuthHeader className="theme_light" />
@@ -96,6 +108,9 @@ function Movies(props) {
       </Gallery>
       <div className={`movies__more ${currentCardsNum >= filteredCards.length ? "hidden" : "" }`}>
         <button className="button movies__more-button" onClick={handleMoreCardsClick}>Ещё</button>
+      </div>
+      <div>
+        {infoMessage}
       </div>
       <Footer />
     </>
