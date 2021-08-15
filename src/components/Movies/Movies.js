@@ -15,6 +15,9 @@ import {
 } from '../../utils/utils';
 
 function Movies({ location }) {
+
+  const prevSearch = (new URLSearchParams(location.search)).get('search');
+
   const currentUser = React.useContext(CurrentUserContext);
   const [filteredCards, setFilteredCards] = React.useState(getLocalMovies());
   const [preloader, setPreloader] = React.useState(false);
@@ -114,7 +117,7 @@ function Movies({ location }) {
         <button className="button movies__more-button" type="button" onClick={handleMoreCardsClick}>Ещё</button>
       </div>
       <div>
-        {infoMessage}
+        <p className="movies__info-msg">{infoMessage}</p>
       </div>
       <Footer />
     </>

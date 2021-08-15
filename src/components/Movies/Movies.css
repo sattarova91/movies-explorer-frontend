@@ -16,15 +16,21 @@
   padding: 0 70px 52px 70px;
 }
 
+.movies__info-msg {
+  padding: 0 70px 0 70px;
+  text-align: center;
+  margin: 0;
+}
+
 @media screen and (max-width: 890px) {
   .movies__more {
-    padding: 30px 0x 52px 30px;
+    padding: 0px 30px 52px 30px;
   }
 }
 
 @media screen and (max-width: 450px) {
   .movies__more {
-    padding: 10px 0 52px 10px;
+    padding: 0 10px 52px 10px;
   }
 }
 
