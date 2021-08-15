@@ -14,8 +14,7 @@ import {
   search, movieIndex, getLocalMovies, setLocalMovies,
 } from '../../utils/utils';
 
-function Movies() {
-
+function Movies({ location }) {
   const currentUser = React.useContext(CurrentUserContext);
   const [filteredCards, setFilteredCards] = React.useState(getLocalMovies());
   const [preloader, setPreloader] = React.useState(false);

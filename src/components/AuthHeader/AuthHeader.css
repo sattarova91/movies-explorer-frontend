@@ -18,12 +18,11 @@
 }
 
 .header__auth .active {
-  border: 1px solid red;
+  font-weight: 500;
 }
 
 .header__link-movies {
   font-style: normal;
-  font-weight: 500;
   font-size: 13px;
   line-height: 18px;
   margin: 0 16px 0 44px;
@@ -32,7 +31,6 @@
 
 .header__link-saved-movies {
   font-style: normal;
-  font-weight: 500;
   font-size: 13px;
   line-height: 18px;
   text-decoration: none;
