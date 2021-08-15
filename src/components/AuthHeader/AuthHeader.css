@@ -17,7 +17,11 @@
   }
 }
 
-.header__button-movies {
+.header__auth .active {
+  border: 1px solid red;
+}
+
+.header__link-movies {
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
@@ -26,7 +30,7 @@
   text-decoration: none;
 }
 
-.header__button-saved-movies {
+.header__link-saved-movies {
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
@@ -42,7 +46,7 @@
   padding: 8px 7px 8px 7px;
 }
 
-.header__button-account {
+.header__link-account {
   font-style: normal;
   font-weight: 500;
   font-size: 13px;

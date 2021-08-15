@@ -49,7 +49,7 @@
   align-items: center;
 }
 
-.header-menu__button-main {
+.header-menu__link-main {
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -60,7 +60,7 @@
   margin-bottom: 28px;
 }
 
-.header-menu__button-saved-movies {
+.header-menu__link-saved-movies {
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -70,7 +70,7 @@
   color: #000000;
 }
 
-.header-menu__button-movies {
+.header-menu__link-movies {
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -82,7 +82,7 @@
   margin-bottom: 28px;
 }
 
-.header-menu__button-account {
+.header-menu__link-account {
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

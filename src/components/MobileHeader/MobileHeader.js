@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import './MobileHeader.css';
 import MenuImg from '../../images/menu-icon.svg';
@@ -8,6 +8,8 @@ import Avatar from '../../images/header-img-account.svg';
 
 function MobileHeader() {
   const [isPopupOpened, setIsPopupOpened] = React.useState(false);
+  const location = useLocation();
+
 
   function closePopup() {
     setIsPopupOpened(false);
@@ -25,12 +27,12 @@ function MobileHeader() {
         </button>
         <Popup name="mobile-menu" isOpen={isPopupOpened} onClose={closePopup}>
           <div className="header-menu__links">
-            <Link className="button header-menu__button-main" to="/">Главная</Link>
-            <Link className="button header-menu__button-movies" to="/movies">Фильмы</Link>
-            <Link className="button header-menu__button-saved-movies" to="/savedmovies">Сохранённые фильмы</Link>
+            <Link className={`header-menu__link-main ${location.pathname === '/' ? " active" : ""}`} to="/">Главная</Link>
+            <Link className={`header-menu__link-movies ${location.pathname === '/movies' ? " active" : ""}`} to="/movies">Фильмы</Link>
+            <Link className={`header-menu__link-saved-movies ${location.pathname === '/savedmovies' ? " active" : ""}`} to="/savedmovies">Сохранённые фильмы</Link>
           </div>
           <div className="header-menu__account">
-            <Link className="button header-menu__button-account" to="/profile">Аккаунт</Link>
+            <Link className="header-menu__link-account" to="/profile">Аккаунт</Link>
             <img className="header__img-account" alt="аватар" src={Avatar} />
           </div>
         </Popup>
