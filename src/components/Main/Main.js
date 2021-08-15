@@ -7,10 +7,10 @@ import About from '../About/About';
 import Student from '../Student/Student';
 import Tech from '../Tech/Tech';
 
-function Main({ loggedIn }) {
+function Main() {
   return (
     <>
-      <LandingHeader loggedIn={loggedIn} />
+      <LandingHeader />
       <Landing />
       <About />
       <Tech />

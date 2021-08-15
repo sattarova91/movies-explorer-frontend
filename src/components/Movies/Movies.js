@@ -15,6 +15,7 @@ import {
 } from '../../utils/utils';
 
 function Movies() {
+
   const currentUser = React.useContext(CurrentUserContext);
   const [filteredCards, setFilteredCards] = React.useState(getLocalMovies());
   const [preloader, setPreloader] = React.useState(false);
@@ -35,6 +36,7 @@ function Movies() {
     setInfoMessage('');
     setFilteredCards([]);
     setPreloader(true);
+
     API.getAllMovies(currentUser._id).then((allMovies) => {
       const res = search(allMovies, searchStr, isShort);
       setLocalMovies(res);

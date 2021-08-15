@@ -9,16 +9,27 @@ function search(movies, searchStr, isShort = false) {
   );
 }
 
-function getLocalMovies() {
-  const movies = JSON.parse(localStorage.getItem('movies'));
-  if (!movies) {
-    return [];
+
+function lsGet(key, def) {
+  const res = JSON.parse(localStorage.getItem(key));
+  if (!res) {
+    return def;
+  } else {
+    return res;
   }
-  return movies;
+}
+
+function lsSet(key, val) {
+  localStorage.setItem(key, JSON.stringify(val));
+}
+
+
+function getLocalMovies() {
+  return lsGet('movies', []);
 }
 
 function setLocalMovies(movies) {
-  localStorage.setItem('movies', JSON.stringify(movies));
+  lsSet('movies', movies)
 }
 
 function movieIndex(movies, movieId) {
@@ -27,4 +38,5 @@ function movieIndex(movies, movieId) {
 
 export {
   search, movieIndex, getLocalMovies, setLocalMovies,
+  lsGet, lsSet
 };
