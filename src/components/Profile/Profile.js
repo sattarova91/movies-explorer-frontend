@@ -3,12 +3,15 @@ import './Profile.css';
 import { useHistory } from 'react-router-dom';
 import { Formik } from 'formik';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
+import { MessageContext } from '../../contexts/MessageContext';
 import AuthHeader from '../AuthHeader/AuthHeader';
 
 function Profile({ onLogout, onUpdateUser }) {
   const [isEditMode, setIsEditMode] = React.useState(false);
   const currentUser = React.useContext(CurrentUserContext);
   const history = useHistory();
+
+  const { add:addMessage } = React.useContext(MessageContext);
 
   function handleLogout() {
     onLogout();
@@ -39,12 +42,10 @@ function Profile({ onLogout, onUpdateUser }) {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          onUpdateUser({
-            name: values.name,
-            email: values.email,
+          onUpdateUser({name: values.name, email: values.email}).then(() => {
+            setSubmitting(false);
+            setIsEditMode(false);
           });
-          setSubmitting(false);
-          setIsEditMode(false);
         }}
       >
         {({

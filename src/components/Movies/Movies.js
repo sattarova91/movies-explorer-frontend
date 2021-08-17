@@ -1,27 +1,29 @@
 import React from 'react';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import { MessageContext } from '../../contexts/MessageContext';
+
+import API from '../../utils/MainApi';
+import {
+  search, movieIndex, getLocalMovies, setLocalMovies,
+} from '../../utils/utils';
+
 import Footer from '../Footer/Footer';
 import Search from '../Search/Search';
 import Gallery from '../Gallery/Gallery';
 import Preloader from '../Preloader/Preloader';
 import FilmCard from '../FilmCard/FilmCard';
 import SectionSeparator from '../SectionSeparator/SectionSeparator';
-import CurrentUserContext from '../../contexts/CurrentUserContext';
+import AuthHeader from '../AuthHeader/AuthHeader';
 
 import './Movies.css';
-import AuthHeader from '../AuthHeader/AuthHeader';
-import API from '../../utils/MainApi';
-import {
-  search, movieIndex, getLocalMovies, setLocalMovies,
-} from '../../utils/utils';
 
-function Movies({ location }) {
-
-  const prevSearch = (new URLSearchParams(location.search)).get('search');
-
+function Movies() {
   const currentUser = React.useContext(CurrentUserContext);
   const [filteredCards, setFilteredCards] = React.useState(getLocalMovies());
   const [preloader, setPreloader] = React.useState(false);
   const [infoMessage, setInfoMessage] = React.useState('');
+
+  const { add:addMessage } = React.useContext(MessageContext);
 
   function onSave(card) {
     // card._id присутствует только у сохранённого фильма
@@ -30,7 +32,7 @@ function Movies({ location }) {
       filteredCards[idx]._id = res._id;
       setFilteredCards([...filteredCards]);
     }).catch((err) => {
-      console.log(err);
+      addMessage("Ошибка", err);
     });
   }
 

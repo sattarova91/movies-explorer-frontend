@@ -4,10 +4,12 @@ import { Formik } from 'formik';
 import Logo from '../Logo/Logo';
 import './Signin.css';
 
+import { MessageContext } from '../../contexts/MessageContext';
 import API from '../../utils/MainApi';
 
 function Signin({ onLogin }) {
   const history = useHistory();
+  const { add:addMessage } = React.useContext(MessageContext);
 
   return (
     <Formik
@@ -35,11 +37,7 @@ function Signin({ onLogin }) {
           onLogin(loggedInUser);
           history.push('/movies');
         }).catch((err) => {
-          console.log({
-            level: 'error',
-            message: 'Что-то пошло не так!',
-            err,
-          });
+          addMessage("Ошибка", err);
         });
         setSubmitting(false);
       }}

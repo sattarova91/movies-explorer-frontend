@@ -4,10 +4,12 @@ import { Formik } from 'formik';
 import Logo from '../Logo/Logo';
 import './Signup.css';
 
+import { MessageContext } from '../../contexts/MessageContext';
 import API from '../../utils/MainApi';
 
 function Signup({ onLogin }) {
   const history = useHistory();
+  const { add:addMessage } = React.useContext(MessageContext);
 
   return (
     <Formik
@@ -44,32 +46,17 @@ function Signup({ onLogin }) {
           password: values.password,
         }).then((regUser) => {
           if (regUser._id) {
-            console.log({
-              level: 'info',
-              message: 'Вы успешно зарегистрировались!',
-            });
             API.signIn({ email: values.email, password: values.password }).then((loggedInUser) => {
               onLogin(loggedInUser);
               history.push('/movies');
             }).catch((err) => {
-              console.log({
-                level: 'error',
-                message: 'Что-то пошло не так!',
-                err,
-              });
+              addMessage("Ошибка", err);
             });
           } else {
-            console.log({
-              level: 'error',
-              message: 'Что-то пошло не так!',
-            });
+            addMessage("", "Что-то пошло не так!");
           }
         }).catch((err) => {
-          console.log({
-            level: 'error',
-            message: 'Что-то пошло не так!',
-            err,
-          });
+          addMessage("Ошибка", err);
         });
         setSubmitting(false);
       }}

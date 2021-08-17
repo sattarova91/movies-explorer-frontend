@@ -2,13 +2,16 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
+import { MessageContext } from '../../contexts/MessageContext';
+
 import API from '../../utils/MainApi';
 import {
   lsGetUser, lsSetUser,
-  isSameUser, EMPTY_USER
+  isSameUser, EMPTY_USER,
 } from '../../utils/user';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
+import GlobalPopup from '../GlobalPopup/GlobalPopup';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import Signup from '../Signup/Signup';
@@ -20,6 +23,7 @@ import './App.css';
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState(lsGetUser());
+  const { add:addMessage } = React.useContext(MessageContext);
 
   function handleLogin(loggedInUser) {
     setCurrentUser(loggedInUser);
@@ -30,6 +34,8 @@ function App() {
     API.signOut().then(() => {
       setCurrentUser(EMPTY_USER);
       lsSetUser(EMPTY_USER);
+    }).catch((err) => {
+      addMessage("Ошибка", err);
     });
   }
 
@@ -50,13 +56,13 @@ function App() {
     authCheck();
   }, []);
 
-
   function handleUpdateUser(user) {
-    API.updateCurrentUser(user).then((updatedUser) => {
+    return API.updateCurrentUser(user).then((updatedUser) => {
       setCurrentUser(updatedUser);
       lsSetUser(updatedUser);
+      addMessage("", "Сохранено");
     }).catch((err) => {
-      console.log(err);
+      addMessage("Ошибка", err);
     });
   }
 
@@ -95,6 +101,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+      <GlobalPopup />
     </CurrentUserContext.Provider>
   );
 }

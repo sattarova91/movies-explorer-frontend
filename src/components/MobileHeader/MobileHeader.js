@@ -10,7 +10,6 @@ function MobileHeader() {
   const [isPopupOpened, setIsPopupOpened] = React.useState(false);
   const location = useLocation();
 
-
   function closePopup() {
     setIsPopupOpened(false);
   }
@@ -27,9 +26,9 @@ function MobileHeader() {
         </button>
         <Popup name="mobile-menu" isOpen={isPopupOpened} onClose={closePopup}>
           <div className="header-menu__links">
-            <Link className={`header-menu__link-main ${location.pathname === '/' ? " active" : ""}`} to="/">Главная</Link>
-            <Link className={`header-menu__link-movies ${location.pathname === '/movies' ? " active" : ""}`} to="/movies">Фильмы</Link>
-            <Link className={`header-menu__link-saved-movies ${location.pathname === '/savedmovies' ? " active" : ""}`} to="/savedmovies">Сохранённые фильмы</Link>
+            <Link className={`header-menu__link-main ${location.pathname === '/' ? ' active' : ''}`} to="/">Главная</Link>
+            <Link className={`header-menu__link-movies ${location.pathname === '/movies' ? ' active' : ''}`} to="/movies">Фильмы</Link>
+            <Link className={`header-menu__link-saved-movies ${location.pathname === '/savedmovies' ? ' active' : ''}`} to="/savedmovies">Сохранённые фильмы</Link>
           </div>
           <div className="header-menu__account">
             <Link className="header-menu__link-account" to="/profile">Аккаунт</Link>

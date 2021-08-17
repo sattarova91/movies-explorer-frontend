@@ -5,6 +5,7 @@ import Gallery from '../Gallery/Gallery';
 import FilmCard from '../FilmCard/FilmCard';
 import SectionSeparator from '../SectionSeparator/SectionSeparator';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
+import { MessageContext } from '../../contexts/MessageContext';
 
 import './SavedMovies.css';
 import AuthHeader from '../AuthHeader/AuthHeader';
@@ -13,6 +14,7 @@ import { search, movieIndex } from '../../utils/utils';
 
 function SavedMovies() {
   const currentUser = React.useContext(CurrentUserContext);
+  const { add:addMessage } = React.useContext(MessageContext);
   const [savedCards, setSavedCards] = React.useState([]);
   const [filteredCards, setFilteredCards] = React.useState([]);
 
@@ -25,6 +27,8 @@ function SavedMovies() {
       const filteredIdx = movieIndex(filteredCards, card.movieId);
       filteredCards.splice(filteredIdx, 1);
       setFilteredCards([...filteredCards]);
+    }).catch((err) => {
+      addMessage("Ошибка", err);
     });
   }
 
@@ -37,7 +41,7 @@ function SavedMovies() {
       setSavedCards(apiSavedCards);
       setFilteredCards([...apiSavedCards]);
     }).catch((err) => {
-      console.log(err);
+      addMessage("Ошибка", err);
     });
   }, []);
 

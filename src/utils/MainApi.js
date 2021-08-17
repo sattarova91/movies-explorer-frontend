@@ -18,10 +18,6 @@ class MainApi extends Api {
 
   // userAPI
 
-  getCurrentUser() {
-    return this.get('users/me');
-  }
-
   updateCurrentUser({ name, email }) {
     return this.patch('users/me', { name, email });
   }
