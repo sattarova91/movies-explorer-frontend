@@ -25,15 +25,25 @@ function Movies() {
 
   const { add:addMessage } = React.useContext(MessageContext);
 
-  function onSave(card) {
+  function toggleSaveCard(card) {
     // card._id присутствует только у сохранённого фильма
-    API.saveMovie(card).then((res) => {
-      const idx = movieIndex(filteredCards, card.movieId);
-      filteredCards[idx]._id = res._id;
-      setFilteredCards([...filteredCards]);
-    }).catch((err) => {
-      addMessage("Ошибка", err);
-    });
+    if (card._id) {
+      API.deleteMovie(card._id).then(() => {
+        const idx = movieIndex(filteredCards, card.movieId);
+        filteredCards[idx]._id = null;
+        setFilteredCards([...filteredCards]);
+      }).catch((err) => {
+        addMessage("Ошибка", err);
+      });
+    } else {
+      API.saveMovie(card).then((res) => {
+        const idx = movieIndex(filteredCards, card.movieId);
+        filteredCards[idx]._id = res._id;
+        setFilteredCards([...filteredCards]);
+      }).catch((err) => {
+        addMessage("Ошибка", err);
+      });
+    }
   }
 
   function handleSearch(searchStr, isShort) {
@@ -96,11 +106,10 @@ function Movies() {
     cardsShown.push(
       <FilmCard card={card} key={card.movieId}>
         <button
-          className="button movies__save-button"
+          className={`button movies__save-button ${card._id ? 'saved' : ''}`}
           type="button"
           aria-label="Сохранить фильм"
-          disabled={card._id}
-          onClick={() => { onSave(card); }}
+          onClick={() => { toggleSaveCard(card); }}
         />
       </FilmCard>,
     );

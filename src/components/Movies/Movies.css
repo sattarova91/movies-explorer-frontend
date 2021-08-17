@@ -53,7 +53,7 @@
   content: "Сохранить"
 }
 
-.movies__save-button:disabled {
+.movies__save-button.saved {
   border-radius: 30px;
   background: #FF3055;
   background-position: center;
@@ -63,7 +63,7 @@
   height: 21px;
 }
 
-.movies__save-button:disabled:before{
+.movies__save-button.saved:before{
   content: "";
   display: block;
   width: 8px;
