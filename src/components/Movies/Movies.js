@@ -1,4 +1,5 @@
 import React from 'react';
+
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { MessageContext } from '../../contexts/MessageContext';
 
@@ -17,9 +18,13 @@ import AuthHeader from '../AuthHeader/AuthHeader';
 
 import './Movies.css';
 
-function Movies() {
+
+function Movies({ location }) {
   const currentUser = React.useContext(CurrentUserContext);
-  const [filteredCards, setFilteredCards] = React.useState(getLocalMovies());
+
+  const [allMovies, setAllMovies] = React.useState(getLocalMovies());
+  const [filteredCards, setFilteredCards] = React.useState([]);
+
   const [preloader, setPreloader] = React.useState(false);
   const [infoMessage, setInfoMessage] = React.useState('');
 
@@ -51,23 +56,12 @@ function Movies() {
     setFilteredCards([]);
     setPreloader(true);
 
-    API.getAllMovies(currentUser._id).then((allMovies) => {
-      const res = search(allMovies, searchStr, isShort);
-      setLocalMovies(res);
-      setFilteredCards(res);
-      setPreloader(false);
-      if (!res.length) {
-        setInfoMessage('ничего не найдено');
-      }
-    }).catch((err) => {
-      console.log(err);
-      setPreloader(false);
-      setInfoMessage(
-        'Во время запроса произошла ошибка.'
-        + ' Возможно, проблема с соединением или сервер недоступен.'
-        + ' Подождите немного и попробуйте ещё раз',
-      );
-    });
+    const res = search(allMovies, searchStr, isShort);
+    setFilteredCards(res);
+    setPreloader(false);
+    if (!res.length) {
+      setInfoMessage('ничего не найдено');
+    }
   }
 
   const [currentCardsNum, setCurrentCardsNum] = React.useState(0);
@@ -87,7 +81,12 @@ function Movies() {
   }
 
   React.useEffect(() => {
-    // перерисовываем когда был нажат Поиск
+    API.getAllMovies(currentUser._id).then((allMovies) => {
+      setAllMovies(allMovies);
+      setLocalMovies(allMovies);
+    }).catch((err) => {
+      addMessage("Ошибка", err);
+    });
     setCurrentCardsNum(initCardsNum());
   }, []);
 

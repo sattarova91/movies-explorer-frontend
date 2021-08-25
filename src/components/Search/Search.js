@@ -1,12 +1,40 @@
 import React from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+
 import './Search.css';
 import { Formik } from 'formik';
 import searchImg from '../../images/search-img.svg';
 
 function Search({ onSearch }) {
+  const location = useLocation();
+  const history = useHistory();
+
+  function setSearchURL(searchStr, isShort) {
+    history.push({
+      search: `?searchStr=${searchStr}&isShort=${isShort}`
+    })
+  }
+  function getSearchURL() {
+    const params = new URLSearchParams(location.search);
+    const searchStr = params.get('searchStr');
+    return {
+      searchStr: searchStr ? searchStr : '',
+      isShort: params.get('isShort') === 'true',
+    }
+  }
+
+  const {searchStr: prevSearchStr, isShort: prevIsShort} = getSearchURL();
+
+  React.useEffect(() => {
+    if (prevSearchStr || prevIsShort) {
+      // восстанавливаем предыдущий поиск при загруки компонента
+      onSearch(prevSearchStr, prevIsShort);
+    }
+  }, []);
+
   return (
     <Formik
-      initialValues={{ search: '', isShort: false }}
+      initialValues={{ search: prevSearchStr, isShort: prevIsShort }}
       validate={(values) => {
         const errors = {};
         if (!values.search) {
@@ -15,6 +43,7 @@ function Search({ onSearch }) {
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
+        setSearchURL(values.search, values.isShort);
         onSearch(values.search, values.isShort);
         setSubmitting(false);
       }}
