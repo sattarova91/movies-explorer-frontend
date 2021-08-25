@@ -1,12 +1,12 @@
 import React from 'react';
 import './Preloader.css';
 
-function Preloader(props) {
-  return (
-    <section className="preloader">
-      <button className="button preloader__more-button">Ещё</button>
-    </section>
-  )
-}
+const Preloader = ({ className }) => (
+  <div className={`preloader ${className}`}>
+    <div className="preloader__container">
+      <span className="preloader__round" />
+    </div>
+  </div>
+);
 
 export default Preloader;

@@ -43,13 +43,17 @@
   right: 22px;
 }
 
+.header-menu__links .active {
+  border-bottom: 2px solid #000000;
+}
+
 .header-menu__links {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.header-menu__button-main {
+.header-menu__links a {
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -60,29 +64,16 @@
   margin-bottom: 28px;
 }
 
-.header-menu__button-saved-movies {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
-  text-align: center;
-  text-decoration: none;
-  color: #000000;
+.header-menu__link-main {
 }
 
-.header-menu__button-movies {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
-  text-align: center;
-  text-decoration: none;
-  color: #000000;
-  border-bottom: 2px solid #000000;
-  margin-bottom: 28px;
+.header-menu__link-saved-movies {
 }
 
-.header-menu__button-account {
+.header-menu__link-movies {
+}
+
+.header-menu__link-account {
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

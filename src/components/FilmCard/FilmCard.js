@@ -1,22 +1,23 @@
 import React from 'react';
 import './FilmCard.css';
 
-function saveCard(evt) {
-  evt.target.classList.toggle('film-card__save-button_saved');
+function minutesToHours(allMinutes) {
+  const hours = Math.floor(allMinutes / 60);
+  const minutes = allMinutes % 60;
+  return `${hours}ч ${minutes}м`;
 }
 
-function MoviesCard(props) {
+function FilmCard({ card, children }) {
   return (
     <div className="film-card">
-      <img className="film-card__img" src={props.card.src} alt="изображенияФильма" />
+      <img className="film-card__img" src={card.image} alt="изображенияФильма" />
       <div className="film-card__about">
-        <p className="film-card__title">{props.card.title}</p>
-        <p className="film-card__time">{props.card.time}</p>
+        <p className="film-card__title">{card.nameRU}</p>
+        <p className="film-card__time">{minutesToHours(card.duration)}</p>
       </div>
-      <button className={"button film-card__save-button" + (props.card.saved ? " hidden" : "")} onClick={saveCard}></button>
-      <button className={"button film-card__detele-button" + (props.card.saved  ? ""  : " hidden")} onClick={saveCard}></button>
+      {children}
     </div>
-  )
+  );
 }
 
-export default MoviesCard;
+export default FilmCard;

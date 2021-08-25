@@ -1,7 +1,7 @@
 import React from 'react';
 import './About.css';
 
-function About(props) {
+function About() {
   return (
     <section className="about">
       <h2 id="about" className="about__title">О проекте</h2>
@@ -22,7 +22,7 @@ function About(props) {
         <p className="about__progress-text">Front-end</p>
       </div>
     </section>
-  )
+  );
 }
 
 export default About;

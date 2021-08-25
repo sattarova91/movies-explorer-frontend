@@ -7,9 +7,7 @@ import About from '../About/About';
 import Student from '../Student/Student';
 import Tech from '../Tech/Tech';
 
-
-
-function Main(props) {
+function Main() {
   return (
     <>
       <LandingHeader />
@@ -17,10 +15,9 @@ function Main(props) {
       <About />
       <Tech />
       <Student />
-      <Footer>
-      </Footer>
+      <Footer />
     </>
-  )
+  );
 }
 
 export default Main;

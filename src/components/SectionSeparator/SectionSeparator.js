@@ -1,7 +1,7 @@
 import React from 'react';
 import './SectionSeparator.css';
 
-function SectionSeparator(props) {
+function SectionSeparator() {
   return (
     <>
       <hr className="section-separator" />

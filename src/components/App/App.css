@@ -5,7 +5,12 @@
   height: 100vh;
 }
 
-.button:hover {
+button:disabled {
+  background: #F8F8F8;
+  color: #C2C2C2;
+}
+
+.button:hover:enabled {
   transition: 0.3s linear;
   opacity: 0.6;
   cursor: pointer;
@@ -17,4 +22,26 @@
 
 .hidden {
   display: none;
+}
+
+.theme_dark  {
+  background-color: #073042;
+}
+
+.theme_dark a {
+  color: #FFFFFF;
+}
+
+.theme_light {
+  background-color: #FFFFFF;
+}
+
+.theme_light a {
+  color: #000000;
+}
+
+a:hover {
+  transition: 0.3s linear;
+  opacity: 0.6;
+  cursor: pointer;
 }
